@@ -28,26 +28,6 @@ usort($projects, function($a, $b) {
             <h3 class="mb-3 text-3xl leading-normal font-medium text-white">Research Projects</h3>
             <p class="text-slate-300 text-lg max-w-xl mx-auto">{{ $sectionData['hero_description'] ?? 'Discover our complete portfolio of innovative projects spanning AI emotion recognition, virtual reality, and human-computer interaction research.' }}</p>
         </div><!--end grid-->
-        
-        <!-- Stats Overview -->
-        <div class="grid md:grid-cols-4 grid-cols-2 gap-6 max-w-4xl mx-auto mt-10">
-            <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <div class="text-2xl font-bold text-blue-400 mb-1">{{ $stats['total_projects'] ?? '12' }}</div>
-                <div class="text-sm text-slate-300">Total Projects</div>
-            </div>
-            <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <div class="text-2xl font-bold text-emerald-400 mb-1">{{ $stats['active_projects'] ?? '9' }}</div>
-                <div class="text-sm text-slate-300">Active Research</div>
-            </div>
-            <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <div class="text-2xl font-bold text-violet-400 mb-1">{{ $stats['total_researchers'] ?? '98' }}</div>
-                <div class="text-sm text-slate-300">Researchers</div>
-            </div>
-            <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-                <div class="text-2xl font-bold text-amber-400 mb-1">{{ $stats['total_funding'] ?? '$4.9M' }}</div>
-                <div class="text-sm text-slate-300">Total Funding</div>
-            </div>
-        </div>
     </div><!--end container-->
     
     <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
@@ -100,19 +80,6 @@ usort($projects, function($a, $b) {
             <div class="group relative rounded-xl overflow-hidden shadow-md dark:shadow-gray-800 hover:shadow-xl transition-all duration-500 h-full min-h-[500px] flex flex-col">
                 <div class="relative overflow-hidden h-[200px]">
                     <img src="{{ asset($project['image'] ?? 'assets/images/projects/default.jpg') }}" class="group-hover:scale-110 duration-500 w-full h-full object-cover" alt="{{ $project['title'] ?? 'Project' }}">
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                    
-                    <!-- Project Category Badge -->
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-{{ $project['category']['color'] ?? 'blue-600' }} text-white text-xs px-3 py-1 rounded-full font-medium">{{ $project['category']['name'] ?? 'Research' }}</span>
-                    </div>
-                    
-                    <!-- Quick View Button -->
-                    <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                        <a href="{{ url($project['url'] ?? '#') }}" class="size-9 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-white hover:bg-{{ $project['category']['color'] ?? 'blue-600' }} text-slate-900 hover:text-white rounded-full">
-                            <i class="uil uil-eye"></i>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="p-6 flex-1 flex flex-col">
@@ -197,25 +164,6 @@ usort($projects, function($a, $b) {
     </div>
 </section>
 
-<!-- Call to Action Section -->
-<section class="relative md:py-24 py-16 bg-gradient-to-r from-blue-600 to-violet-600">
-    <div class="container relative">
-        <div class="text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">Collaborate on Cutting-Edge Research</h2>
-            <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-                Join our research team and contribute to the next generation of empathic computing technologies. We welcome collaborations, partnerships, and research proposals.
-            </p>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <a href="{{ route('contact-us') }}" class="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-300 shadow-lg">
-                    Start Collaboration
-                </a>
-                <a href="{{ route('research') }}" class="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300">
-                    View Research Areas
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 
 @endsection
 

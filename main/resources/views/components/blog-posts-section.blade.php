@@ -46,10 +46,6 @@ usort($blogs, function($a, $b) {
                         <span class="bg-{{ $blog['category']['color'] ?? 'blue-600' }} text-white text-xs px-3 py-1 rounded-full font-medium">{{ $blog['category']['name'] ?? 'Blog' }}</span>
                     </div>
                     
-                    <!-- Read Time -->
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-white/90 text-slate-900 text-xs px-2 py-1 rounded-full font-medium">{{ $blog['read_time'] ?? '5 min read' }}</span>
-                    </div>
                     
                     <!-- Quick Read Button -->
                     <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500">
@@ -60,16 +56,10 @@ usort($blogs, function($a, $b) {
                 </div>
 
                 <div class="p-6 flex-1 flex flex-col">
-                    <!-- Date and Author -->
-                    <div class="flex items-center justify-between mb-4 text-sm text-slate-400">
-                        <div class="flex items-center">
-                            <i class="uil uil-calendar-alt me-2"></i>
-                            <span>{{ $blog['published_date'] ?? 'Date' }}</span>
-                        </div>
-                        <div class="flex items-center">
-                            <img src="{{ asset($blog['author']['image'] ?? 'assets/images/team/default.jpg') }}" class="size-6 rounded-full me-2" alt="{{ $blog['author']['full_name'] ?? 'Author' }}">
-                            <span>{{ $blog['author']['name'] ?? 'Author' }}</span>
-                        </div>
+                    <!-- Date -->
+                    <div class="flex items-center mb-4 text-sm text-slate-400">
+                        <i class="uil uil-calendar-alt me-2"></i>
+                        <span>{{ $blog['published_date'] ?? 'Date' }}</span>
                     </div>
                     
                     <h5 class="text-lg font-medium hover:text-{{ $blog['hover_color'] ?? 'blue-600' }} transition-colors duration-300 mb-3">
@@ -90,14 +80,10 @@ usort($blogs, function($a, $b) {
                     </div>
                     
                     <!-- Read More Link -->
-                    <div class="flex items-center justify-between">
+                    <div>
                         <a href="{{ url($blog['url'] ?? '#') }}" class="relative inline-flex items-center font-semibold tracking-wide align-middle text-sm text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-{{ $blog['hover_color'] ?? 'blue-600' }} hover:text-{{ $blog['hover_color'] ?? 'blue-600' }} after:bg-{{ $blog['hover_color'] ?? 'blue-600' }} duration-500 ease-in-out">
                             Read More <i class="uil uil-arrow-right text-xs"></i>
                         </a>
-                        <div class="flex items-center text-slate-400 text-sm">
-                            <i class="uil uil-eye me-1"></i>
-                            <span>{{ number_format($blog['views'] ?? 0) }}</span>
-                        </div>
                     </div>
                 </div>
             </div>

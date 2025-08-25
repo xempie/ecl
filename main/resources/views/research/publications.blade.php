@@ -269,22 +269,6 @@ foreach ($publications as $index => $publication) {
                             <span class="text-sm text-slate-600 dark:text-slate-300 {{ $author['lead'] ? 'font-medium' : '' }}">{{ $author['name'] }}{{ !$loop->last ? ',' : '' }}</span>
                             @endforeach
                         </div>
-                        
-                        <!-- Publication Details -->
-                        <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400">
-                            <div class="flex items-center">
-                                <i class="uil uil-calendar-alt me-1"></i>
-                                <span>Published: {{ $publication['published_date'] }}</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="uil uil-eye me-1"></i>
-                                <span>{{ number_format($publication['views']) }} views</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="uil uil-heart me-1"></i>
-                                <span>{{ number_format($publication['citations']) }} citations</span>
-                            </div>
-                        </div>
                     </div>
                     
                     <!-- Action Buttons -->

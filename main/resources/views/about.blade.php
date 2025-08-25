@@ -42,9 +42,9 @@
 <!-- Mission & Vision Section -->
 <section id="mission" class="relative md:py-24 py-16 bg-white">
     <div class="container relative">
-        <div class="grid lg:grid-cols-2 grid-cols-1 items-center gap-16">
-            <!-- Left Image -->
-            <div class="relative order-2 lg:order-1">
+        <div class="grid lg:grid-cols-2 grid-cols-1 items-center gap-20 lg:gap-24">
+            <!-- Right Image -->
+            <div class="relative order-2 lg:order-2 lg:pl-8">
                 <div class="relative">
                     <img src="{{ asset('assets/images/about/about.jpg') }}" class="rounded-2xl shadow-xl w-full" alt="Our Mission and Vision">
                     <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 rounded-2xl"></div>
@@ -65,8 +65,8 @@
                 </div>
             </div>
             
-            <!-- Right Content -->
-            <div class="order-1 lg:order-2">
+            <!-- Left Content -->
+            <div class="order-1 lg:order-1 lg:pr-8">
                 <div class="mb-8">
                     <h6 class="text-emerald-600 text-sm font-bold uppercase mb-2 tracking-wider">Our Purpose</h6>
                     <h2 class="text-4xl font-bold text-slate-900 mb-6">
@@ -121,7 +121,7 @@
 
 <!-- Research Areas & Innovation Section -->
 <section id="research" class="relative md:py-24 py-16 research-areas-grid-bg">
-    <div class="container relative">
+    <div class="container relative px-6 lg:px-8">
         <div class="text-center mb-16">
             <h6 class="text-blue-600 text-sm font-bold uppercase mb-2 tracking-wider">Innovation Hub</h6>
             <h2 class="text-4xl font-bold text-slate-900 mb-6">
@@ -133,75 +133,52 @@
             </p>
         </div>
         
-        <div class="grid lg:grid-cols-2 grid-cols-1 gap-16 items-center mb-16">
-            <!-- Left Content -->
-            <div>
-                <div class="space-y-8">
+        <div class="research-grid mb-20">
+            <!-- Text Content -->
+            <div class="research-content">
+                <div class="research-blocks">
                     <!-- Research Area 1 -->
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center">
-                            <i class="uil uil-robot text-2xl" style="color: #60a5fa;"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-900 mb-2">AI Emotion Recognition</h3>
-                            <p class="text-slate-600">Advanced machine learning algorithms that detect and interpret human emotions through facial expressions, voice patterns, and physiological signals with unprecedented accuracy.</p>
-                        </div>
+                    <div class="mb-12">
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">AI Emotion Recognition</h3>
+                        <p class="text-slate-600 leading-relaxed">Advanced machine learning algorithms that detect and interpret human emotions through facial expressions, voice patterns, and physiological signals with unprecedented accuracy.</p>
                     </div>
                     
                     <!-- Research Area 2 -->
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center">
-                            <i class="uil uil-mobile-android-alt text-2xl" style="color: #34d399;"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Collaborative Interfaces</h3>
-                            <p class="text-slate-600">Innovative user interfaces that adapt to individual emotional states and facilitate better human-to-human communication through technology mediation.</p>
-                        </div>
+                    <div class="mb-12">
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Collaborative Interfaces</h3>
+                        <p class="text-slate-600 leading-relaxed">Innovative user interfaces that adapt to individual emotional states and facilitate better human-to-human communication through technology mediation.</p>
                     </div>
                     
                     <!-- Research Area 3 -->
-                    <div class="flex items-start space-x-4">
-                        <div class="flex-shrink-0 w-16 h-16 bg-violet-100 rounded-xl flex items-center justify-center">
-                            <i class="uil uil-sim-card text-2xl" style="color: #a78bfa;"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-slate-900 mb-2">Immersive Reality</h3>
-                            <p class="text-slate-600">Virtual and Augmented Reality environments that respond to user emotions, creating more engaging and therapeutic experiences for education, healthcare, and entertainment.</p>
-                        </div>
+                    <div class="mb-0">
+                        <h3 class="text-xl font-semibold text-slate-900 mb-3">Immersive Reality</h3>
+                        <p class="text-slate-600 leading-relaxed">Virtual and Augmented Reality environments that respond to user emotions, creating more engaging and therapeutic experiences for education, healthcare, and entertainment.</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Right Image -->
-            <div class="relative">
+            <!-- Image Content -->
+            <div class="relative research-image">
                 <img src="{{ asset('assets/images/about/about.jpg') }}" class="rounded-2xl shadow-xl w-full" alt="Research Areas and Innovation">
                 <div class="absolute inset-0 bg-gradient-to-tr from-blue-600/20 to-violet-600/20 rounded-2xl"></div>
-                
-                <!-- Floating Tech Icons -->
-                <div class="absolute -top-4 -right-4 w-20 h-20 bg-white rounded-xl shadow-lg flex items-center justify-center">
-                    <i class="uil uil-brain text-3xl text-blue-600"></i>
-                </div>
-                <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center">
-                    <i class="uil uil-heart text-2xl text-emerald-600"></i>
-                </div>
             </div>
         </div>
         
         <!-- Research Impact Stats -->
-        <div class="grid md:grid-cols-4 grid-cols-2 gap-8">
-            <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+        <div class="stats-grid">
+            <div class="stats-card text-center p-8 bg-white rounded-xl shadow-lg">
                 <div class="text-3xl font-bold text-blue-600 mb-2">50+</div>
                 <div class="text-slate-600">Active Projects</div>
             </div>
-            <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+            <div class="stats-card text-center p-8 bg-white rounded-xl shadow-lg">
                 <div class="text-3xl font-bold text-emerald-600 mb-2">25+</div>
                 <div class="text-slate-600">Researchers</div>
             </div>
-            <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+            <div class="stats-card text-center p-8 bg-white rounded-xl shadow-lg">
                 <div class="text-3xl font-bold text-violet-600 mb-2">200+</div>
                 <div class="text-slate-600">Publications</div>
             </div>
-            <div class="text-center p-6 bg-white rounded-xl shadow-lg">
+            <div class="stats-card text-center p-8 bg-white rounded-xl shadow-lg">
                 <div class="text-3xl font-bold text-amber-600 mb-2">15+</div>
                 <div class="text-slate-600">Countries</div>
             </div>
@@ -212,9 +189,9 @@
 <!-- History & Impact Section -->
 <section id="history" class="relative md:py-24 py-16 bg-gradient-to-br from-slate-50 to-white">
     <div class="container relative">
-        <div class="grid lg:grid-cols-2 grid-cols-1 items-center gap-16">
+        <div class="grid lg:grid-cols-2 grid-cols-1 items-center gap-20 lg:gap-24">
             <!-- Left Content -->
-            <div>
+            <div class="order-1 lg:order-1 lg:pr-8">
                 <div class="mb-8">
                     <h6 class="text-violet-600 text-sm font-bold uppercase mb-2 tracking-wider">Our Journey</h6>
                     <h2 class="text-4xl font-bold text-slate-900 mb-6">
@@ -257,42 +234,14 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Leadership -->
-                <div class="mt-12 p-6 bg-white rounded-xl shadow-lg border-l-4 border-violet-500">
-                    <div class="flex items-start space-x-4">
-                        <img src="{{ asset('assets/images/about/about.jpg') }}" class="w-16 h-16 rounded-full object-cover" alt="Prof. Mark Billinghurst">
-                        <div>
-                            <div class="font-semibold text-slate-900">Prof. Mark Billinghurst</div>
-                            <div class="text-violet-600 text-sm mb-2">Director & Founder</div>
-                            <div class="text-slate-600 text-sm">Leading pioneer in empathic computing research with over 500 publications and 25+ years of experience in human-computer interaction.</div>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <!-- Right Image Collage -->
-            <div class="relative">
+            <div class="relative order-2 lg:order-2 lg:pl-12 xl:pl-16 p-4">
                 <!-- Main Image -->
                 <div class="relative">
                     <img src="{{ asset('assets/images/about/about.jpg') }}" class="rounded-2xl shadow-xl w-full" alt="Lab History and Impact">
                     <div class="absolute inset-0 bg-gradient-to-tr from-violet-600/20 to-blue-600/20 rounded-2xl"></div>
-                </div>
-                
-                <!-- Overlay Images -->
-                <div class="absolute -top-8 -right-8 w-32 h-32 rounded-xl overflow-hidden shadow-lg">
-                    <img src="{{ asset('assets/images/about/about.jpg') }}" class="w-full h-full object-cover" alt="University Campus">
-                </div>
-                <div class="absolute -bottom-8 -left-8 w-40 h-24 rounded-xl overflow-hidden shadow-lg">
-                    <img src="{{ asset('assets/images/about/about.jpg') }}" class="w-full h-full object-cover" alt="Research Team">
-                </div>
-                
-                <!-- Impact Badge -->
-                <div class="absolute top-4 left-4 bg-white rounded-xl shadow-lg p-4">
-                    <div class="text-center">
-                        <div class="text-2xl font-bold text-violet-600">15+</div>
-                        <div class="text-xs text-slate-600">Years Impact</div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -300,21 +249,113 @@
 </section>
 
 <!-- Call to Action Section -->
-<section class="relative md:py-24 py-16 bg-gradient-to-r from-blue-600 to-violet-600">
-    <div class="container relative">
-        <div class="text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">Join Our Research Community</h2>
-            <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-                We're actively seeking talented students, post-docs, and visiting researchers to contribute to the future of empathic computing.
+<section class="relative md:py-24 py-16 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('assets/images/team/team.jpg') }}');">
+    <div class="absolute inset-0" style="background-color: rgba(15, 23, 43, 0.85);"></div>
+    <div class="container relative z-10 px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-white mb-6 leading-tight">
+                Join Our Research 
+                <span class="text-emerald-400">Community</span>
+            </h2>
+            <p class="text-lg text-white mb-12 max-w-3xl mx-auto leading-relaxed">
+                Be part of groundbreaking research that's shaping the future of human-computer interaction. We offer a collaborative environment where innovation thrives.
             </p>
-            <div class="flex flex-wrap gap-4 justify-center">
-                <a href="{{ route('contact-us') }}" class="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all duration-300 shadow-lg">
-                    Join Our Team
+        </div>
+
+        <!-- Opportunities Grid -->
+        <div class="cta-grid mb-16">
+            <!-- PhD Students -->
+            <div class="cta-card bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div class="w-16 h-16 bg-amber-500 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                    <i class="uil uil-graduation-cap text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-4 text-center">PhD Students</h3>
+                <p class="text-white text-center mb-6">
+                    Pursue cutting-edge research in empathic computing with world-class supervision and resources.
+                </p>
+                <ul class="text-white text-sm space-y-3">
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Full funding available
+                    </li>
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Conference travel support
+                    </li>
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Collaborative environment
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Virtual Interns -->
+            <div class="cta-card bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div class="w-16 h-16 bg-amber-500 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                    <i class="uil uil-laptop text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-4 text-center">Virtual Interns</h3>
+                <p class="text-white text-center mb-6">
+                    Gain hands-on research experience remotely while working on real empathic computing projects.
+                </p>
+                <ul class="text-white text-sm space-y-3">
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Remote collaboration
+                    </li>
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Mentorship program
+                    </li>
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Flexible schedule
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Visiting Researchers -->
+            <div class="cta-card bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <div class="w-16 h-16 bg-amber-500 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                    <i class="uil uil-globe text-2xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-white mb-4 text-center">Visiting Researchers</h3>
+                <p class="text-white text-center mb-6">
+                    Collaborate with our international team and bring your expertise to our research initiatives.
+                </p>
+                <ul class="text-white text-sm space-y-3">
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Flexible duration
+                    </li>
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Global network access
+                    </li>
+                    <li class="flex items-center">
+                        <i class="uil uil-check text-amber-400 mr-3"></i>
+                        Research collaboration
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="text-center">
+            <div class="flex flex-wrap gap-6 justify-center mb-8">
+                <a href="{{ route('contact-us') }}" class="group w-52 px-6 py-4 bg-white text-slate-900 font-semibold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center">
+                    <i class="uil uil-envelope-alt mr-2 group-hover:scale-110 transition-transform"></i>
+                    Apply to Join Us
                 </a>
-                <a href="{{ route('research') }}" class="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300">
-                    Explore Research
+                <a href="{{ route('research') }}" class="group w-52 px-6 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 backdrop-blur-sm flex items-center justify-center">
+                    <i class="uil uil-search mr-2 group-hover:scale-110 transition-transform"></i>
+                    Explore Our Research
                 </a>
             </div>
+            
+            <p class="text-white text-sm">
+                Have questions? <a href="{{ route('contact-us') }}" class="text-emerald-400 hover:text-emerald-300 underline font-medium">Contact us</a> to learn more about opportunities.
+            </p>
         </div>
     </div>
 </section>
@@ -328,6 +369,92 @@
 }
 .animation-delay-4000 {
     animation-delay: 4s;
+}
+
+/* Force proper spacing for CTA cards */
+.cta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .cta-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .cta-grid {
+        gap: 4rem;
+    }
+}
+
+.cta-card {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Research section spacing */
+.research-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .research-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+    }
+    
+    .research-image {
+        order: 1;
+        padding-right: 2rem;
+    }
+    
+    .research-content {
+        order: 2;
+        padding-left: 2rem;
+    }
+}
+
+.research-blocks > div {
+    margin-bottom: 3rem;
+}
+
+.research-blocks > div:last-child {
+    margin-bottom: 0;
+}
+
+/* Stats cards spacing */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .stats-grid {
+        gap: 4rem;
+    }
+}
+
+.stats-card {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>
 @endpush
