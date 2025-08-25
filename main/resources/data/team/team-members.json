@@ -1,0 +1,131 @@
+{
+    "section": {
+        "title": "Our Research Team",
+        "subtitle": "Meet Our Team",
+        "description": "Meet our dedicated team of researchers, faculty members, and graduate students who are pushing the boundaries of empathic computing technology.",
+        "hero_title": "Our Research Team",
+        "hero_description": "Meet the brilliant minds behind groundbreaking research in empathic computing, AI emotion recognition, and human-computer interaction."
+    },
+    "team_members": [
+        {
+            "id": 1,
+            "name": "Prof. Mark Billinghurst",
+            "title": "Director & Founder",
+            "description": "Leading pioneer in empathic computing research with over 500 publications in AR/VR and HCI.",
+            "image": "assets/images/team/team.jpg",
+            "email": "mark.billinghurst@unisa.edu.au",
+            "linkedin": "#",
+            "github": "#",
+            "website": "#",
+            "priority": 1
+        },
+        {
+            "id": 2,
+            "name": "Dr. Sarah Chen",
+            "title": "Senior Researcher",
+            "description": "Expert in AI emotion recognition and machine learning applications for empathic systems.",
+            "image": "assets/images/team/team.jpg",
+            "email": "sarah.chen@unisa.edu.au",
+            "linkedin": "#",
+            "github": "#",
+            "website": "#",
+            "priority": 2
+        },
+        {
+            "id": 3,
+            "name": "Dr. James Rodriguez",
+            "title": "VR Research Lead",
+            "description": "Specializes in immersive virtual environments and therapeutic VR applications.",
+            "image": "assets/images/team/team.jpg",
+            "email": "james.rodriguez@unisa.edu.au",
+            "linkedin": "#",
+            "github": "#",
+            "website": "#",
+            "priority": 3
+        },
+        {
+            "id": 4,
+            "name": "Dr. Emily Watson",
+            "title": "Psychology Researcher",
+            "description": "Bridges psychology and technology to understand human emotional responses to computing systems.",
+            "image": "assets/images/team/team.jpg",
+            "email": "emily.watson@unisa.edu.au",
+            "linkedin": "#",
+            "github": "#",
+            "website": "#",
+            "priority": 4
+        },
+        {
+            "id": 5,
+            "name": "Dr. Michael Kim",
+            "title": "AI Systems Developer",
+            "description": "Develops cutting-edge AI algorithms for real-time emotion recognition and response systems.",
+            "image": "assets/images/team/team.jpg",
+            "email": "michael.kim@unisa.edu.au",
+            "linkedin": "#",
+            "github": "#",
+            "website": "#",
+            "priority": 5
+        },
+        {
+            "id": 6,
+            "name": "Dr. Lisa Thompson",
+            "title": "UX Research Director",
+            "description": "Focuses on human-centered design for empathic computing interfaces and user experience.",
+            "image": "assets/images/team/team.jpg",
+            "email": "lisa.thompson@unisa.edu.au",
+            "linkedin": "#",
+            "github": "#",
+            "website": "#",
+            "priority": 6
+        },
+        {
+            "id": 7,
+            "name": "Dr. Alex Patel",
+            "title": "Collaborative Systems Lead",
+            "description": "Researches collaborative interfaces that facilitate empathic communication between users.",
+            "image": "assets/images/team/team.jpg",
+            "email": "alex.patel@unisa.edu.au",
+            "linkedin": "#",
+            "github": "#",
+            "website": "#",
+            "priority": 7
+        },
+        {
+            "id": 8,
+            "name": "Dr. Rachel Green",
+            "title": "Graduate Program Coordinator",
+            "description": "Mentors PhD and Masters students in empathic computing research methodologies.",
+            "image": "assets/images/team/team.jpg",
+            "email": "rachel.green@unisa.edu.au",
+            "linkedin": "#",
+            "github": "#",
+            "website": "#",
+            "priority": 8
+        }
+    ],
+    "colors": [
+        {
+            "style": "bg-blue-400/50 dark:bg-blue-400/50",
+            "hover": "hover:text-blue-400"
+        },
+        {
+            "style": "bg-emerald-400/50 dark:bg-emerald-400/50",
+            "hover": "hover:text-emerald-400"
+        },
+        {
+            "style": "bg-violet-400/50 dark:bg-violet-400/50",
+            "hover": "hover:text-violet-400"
+        },
+        {
+            "style": "bg-amber-400/50 dark:bg-amber-400/50",
+            "hover": "hover:text-amber-400"
+        }
+    ],
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2025-01-14",
+        "total_count": 8,
+        "section_type": "team_members"
+    }
+}

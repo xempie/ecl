@@ -1,0 +1,235 @@
+/* Custom Navbar Styling */
+
+/* Navbar height and spacing */
+#topnav {
+    min-height: 86px !important;
+    padding: 0;
+    background-color: white !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#topnav .container {
+    height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo styling */
+#topnav .logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#topnav .logo img {
+    max-height: 64px; /* h-16 equivalent */
+    width: auto;
+    object-fit: contain;
+}
+
+/* Menu alignment */
+#topnav .menu-extras {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#topnav .buy-button {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#topnav #navigation {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+#topnav .navigation-menu {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+}
+
+#topnav .navigation-menu > li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* Ensure sticky navbar maintains height and background */
+#topnav.nav-sticky {
+    min-height: 86px !important;
+    background-color: white !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Menu text styling - Violet Purple */
+#topnav .navigation-menu .sub-menu-item {
+    color: #7c3aed !important; /* Violet-600 color */
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Override Tailwind's white color-mix rule - Multiple selectors for specificity */
+#topnav .navigation-menu > li > a,
+#topnav .navigation-menu li a,
+#topnav .navigation-menu a {
+    color: #7c3aed !important; /* Force violet-600 color */
+}
+
+#topnav .navigation-menu .sub-menu-item:hover {
+    color: #a78bfa !important; /* Violet-400 on hover (pastel) */
+}
+
+#topnav .navigation-menu .parent-menu-item > a {
+    color: #7c3aed !important; /* Violet-600 for dropdown triggers */
+    font-weight: 500;
+}
+
+#topnav .navigation-menu .parent-menu-item > a:hover {
+    color: #a78bfa !important; /* Violet-400 on hover (pastel) */
+}
+
+/* Submenu styling */
+#topnav .submenu .sub-menu-item {
+    color: #7c3aed !important;
+}
+
+#topnav .submenu .sub-menu-item:hover {
+    color: #a78bfa !important;
+    background-color: #f3f4f6 !important; /* Light gray background on hover */
+}
+
+/* Mobile menu button alignment */
+#topnav .navbar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer Custom Background Color */
+.footer.bg-dark-footer {
+    background-color: #0f172b !important;
+}
+
+/* Research Areas Hover Border Effects - Force Visibility */
+.hover\:border-blue-400:hover {
+    border-bottom-color: #60a5fa !important;
+}
+
+.hover\:border-emerald-400:hover {
+    border-bottom-color: #34d399 !important;
+}
+
+.hover\:border-violet-400:hover {
+    border-bottom-color: #a78bfa !important;
+}
+
+.hover\:border-amber-400:hover {
+    border-bottom-color: #fbbf24 !important;
+}
+
+/* Hide hamburger menu on desktop (1024px and above) */
+@media (min-width: 1024px) {
+    #topnav .navbar-toggle {
+        display: none !important;
+    }
+}
+
+/* FORCE OVERRIDE: Kill all white colors from Tailwind nav-light rules */
+#topnav .navigation-menu.nav-light > li > a,
+#topnav.nav-light .navigation-menu > li > a,
+#topnav .navigation-menu > li > a,
+#topnav .navigation-menu li a,
+#topnav .navigation-menu .sub-menu-item,
+#topnav .navigation-menu .parent-menu-item > a {
+    color: #7c3aed !important; /* Force violet-600 - override ALL white rules */
+    font-weight: 500 !important;
+}
+
+/* FORCE OVERRIDE: Active and hover states */
+#topnav.nav-light .navigation-menu > li.active > a,
+#topnav .navigation-menu.nav-light > li.active > a,
+#topnav .navigation-menu > li.active > a,
+#topnav.nav-light .navigation-menu > li:hover > a,
+#topnav .navigation-menu.nav-light > li:hover > a,
+#topnav .navigation-menu > li > a:hover,
+#topnav .navigation-menu li a:hover,
+#topnav .navigation-menu .sub-menu-item:hover,
+#topnav .navigation-menu .parent-menu-item > a:hover {
+    color: #a78bfa !important; /* Force violet-400 on hover - override ALL white rules */
+}
+
+/* Desktop menu colors - Force violet purple on large screens */
+@media (min-width: 992px) {
+    /* Additional desktop overrides */
+    #topnav.nav-light .navigation-menu > li > a,
+    #topnav .navigation-menu.nav-light > li > a,
+    #topnav .navigation-menu > li > a,
+    #topnav .navigation-menu li a,
+    #topnav .navigation-menu .sub-menu-item,
+    #topnav .navigation-menu .parent-menu-item > a {
+        color: #7c3aed !important; /* Violet-600 for desktop */
+        font-weight: 500 !important;
+    }
+    
+    /* Override hover states for .nav-light */
+    #topnav.nav-light .navigation-menu > li:hover > a,
+    #topnav.nav-light .navigation-menu > li.active > a,
+    #topnav .navigation-menu > li > a:hover,
+    #topnav .navigation-menu li a:hover,
+    #topnav .navigation-menu .sub-menu-item:hover,
+    #topnav .navigation-menu .parent-menu-item > a:hover {
+        color: #a78bfa !important; /* Violet-400 on hover */
+    }
+}
+
+/* Show hamburger menu only on mobile/tablet (below 1024px) */
+@media (max-width: 1023px) {
+    #topnav .navbar-toggle {
+        display: flex !important;
+    }
+    
+    /* Hide main navigation on mobile */
+    #topnav #navigation {
+        display: none;
+    }
+}
+
+/* Research Areas Section - Square Grid Background */
+.research-areas-grid-bg {
+    background-color: #f8fafc; /* Light gray background */
+    background-image: 
+        linear-gradient(rgba(203, 213, 225, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(203, 213, 225, 0.3) 1px, transparent 1px);
+    background-size: 30px 30px; /* Square grid size */
+    background-position: 0 0, 0 0;
+}
+
+/* Dark mode grid */
+.dark .research-areas-grid-bg {
+    background-color: #1e293b; /* Dark background */
+    background-image: 
+        linear-gradient(rgba(71, 85, 105, 0.3) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(71, 85, 105, 0.3) 1px, transparent 1px);
+}
+
+/* Publications Section - Dotted Background Pattern */
+.publications-diagonal-bg {
+    background-color: #f1f5f9 !important; /* Light slate gray background - force override */
+    background-image: 
+        radial-gradient(circle, rgba(148, 163, 184, 0.5) 1px, transparent 1px) !important;
+    background-size: 20px 20px !important; /* Dot pattern spacing */
+    background-position: 0 0 !important;
+}
+
+/* Dark mode dotted pattern */
+.dark .publications-diagonal-bg {
+    background-color: #0f172a !important; /* Dark slate background */
+    background-image: 
+        radial-gradient(circle, rgba(148, 163, 184, 0.4) 1px, transparent 1px) !important;
+}

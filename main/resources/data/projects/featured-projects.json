@@ -1,0 +1,77 @@
+{
+    "section": {
+        "title": "Featured Research Projects",
+        "subtitle": "Our Work",
+        "description": "Discover our groundbreaking projects that are shaping the future of empathic computing and human-technology interaction.",
+        "view_all_link": "/research/projects",
+        "view_all_text": "View All Projects"
+    },
+    "projects": [
+        {
+            "id": 1,
+            "title": "EmotiVR: Emotion-Aware Virtual Environments",
+            "description": "An immersive VR platform that adapts virtual environments based on real-time emotion recognition, creating personalized and empathetic user experiences.",
+            "image": "assets/images/projects/emotivr.jpg",
+            "url": "/projects/emotivr",
+            "category": {
+                "name": "VR Research",
+                "color": "blue-600"
+            },
+            "duration": "2023-2025",
+            "team_size": "8 Researchers",
+            "technologies": [
+                "Unity 3D",
+                "Python",
+                "OpenCV"
+            ],
+            "hover_color": "blue-600",
+            "priority": 1
+        },
+        {
+            "id": 2,
+            "title": "AI Empathy Engine",
+            "description": "A machine learning framework that enables AI systems to understand and respond to human emotions through multimodal input analysis and empathetic response generation.",
+            "image": "assets/images/projects/ai-empathy.jpg",
+            "url": "/projects/ai-empathy",
+            "category": {
+                "name": "AI Research",
+                "color": "green-600"
+            },
+            "duration": "2022-2024",
+            "team_size": "12 Researchers",
+            "technologies": [
+                "TensorFlow",
+                "PyTorch",
+                "NLP"
+            ],
+            "hover_color": "green-600",
+            "priority": 2
+        },
+        {
+            "id": 3,
+            "title": "Adaptive AR Interfaces",
+            "description": "Smart augmented reality interfaces that dynamically adapt to user behavior, cognitive load, and emotional state for enhanced productivity and user experience.",
+            "image": "assets/images/projects/adaptive-ar.jpg",
+            "url": "/projects/adaptive-ar",
+            "category": {
+                "name": "AR Research",
+                "color": "purple-600"
+            },
+            "duration": "2024-2026",
+            "team_size": "6 Researchers",
+            "technologies": [
+                "ARCore",
+                "C#",
+                "Unity"
+            ],
+            "hover_color": "purple-600",
+            "priority": 3
+        }
+    ],
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2025-01-14",
+        "total_count": 3,
+        "section_type": "projects"
+    }
+}

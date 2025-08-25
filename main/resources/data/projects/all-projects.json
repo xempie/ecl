@@ -1,0 +1,301 @@
+{
+    "section": {
+        "title": "Research Projects",
+        "subtitle": "Innovation Portfolio",
+        "description": "Explore our comprehensive collection of groundbreaking research projects that are shaping the future of empathic computing and human-technology interaction.",
+        "hero_title": "Pioneering Research Projects",
+        "hero_description": "Discover our complete portfolio of innovative projects spanning AI emotion recognition, virtual reality, augmented reality, and human-computer interaction research."
+    },
+    "projects": [
+        {
+            "id": 1,
+            "title": "EmotiVR: Emotion-Aware Virtual Environments",
+            "description": "An immersive VR platform that adapts virtual environments based on real-time emotion recognition, creating personalized and empathetic user experiences for therapy and education.",
+            "image": "assets/images/projects/emotivr.jpg",
+            "url": "/projects/emotivr",
+            "category": {
+                "name": "VR Research",
+                "color": "blue-600"
+            },
+            "duration": "2023-2025",
+            "team_size": "8 Researchers",
+            "technologies": [
+                "Unity 3D",
+                "Python",
+                "OpenCV",
+                "TensorFlow"
+            ],
+            "hover_color": "blue-600",
+            "priority": 1,
+            "status": "Active",
+            "funding": "$450K AUD"
+        },
+        {
+            "id": 2,
+            "title": "AI Empathy Engine",
+            "description": "A machine learning framework that enables AI systems to understand and respond to human emotions through multimodal input analysis and empathetic response generation.",
+            "image": "assets/images/projects/ai-empathy.jpg",
+            "url": "/projects/ai-empathy",
+            "category": {
+                "name": "AI Research",
+                "color": "green-600"
+            },
+            "duration": "2022-2024",
+            "team_size": "12 Researchers",
+            "technologies": [
+                "TensorFlow",
+                "PyTorch",
+                "NLP",
+                "Computer Vision"
+            ],
+            "hover_color": "green-600",
+            "priority": 2,
+            "status": "Active",
+            "funding": "$680K AUD"
+        },
+        {
+            "id": 3,
+            "title": "Adaptive AR Interfaces",
+            "description": "Smart augmented reality interfaces that dynamically adapt to user behavior, cognitive load, and emotional state for enhanced productivity and user experience.",
+            "image": "assets/images/projects/adaptive-ar.jpg",
+            "url": "/projects/adaptive-ar",
+            "category": {
+                "name": "AR Research",
+                "color": "purple-600"
+            },
+            "duration": "2024-2026",
+            "team_size": "6 Researchers",
+            "technologies": [
+                "ARCore",
+                "C#",
+                "Unity",
+                "Machine Learning"
+            ],
+            "hover_color": "purple-600",
+            "priority": 3,
+            "status": "Active",
+            "funding": "$320K AUD"
+        },
+        {
+            "id": 4,
+            "title": "EmpathicChat: Emotion-Aware Conversational AI",
+            "description": "Advanced chatbot system that recognizes user emotions through text analysis and voice patterns, providing empathetic and contextually appropriate responses.",
+            "image": "assets/images/projects/emotivr.jpg",
+            "url": "/projects/empathic-chat",
+            "category": {
+                "name": "NLP Research",
+                "color": "emerald-600"
+            },
+            "duration": "2023-2024",
+            "team_size": "5 Researchers",
+            "technologies": [
+                "BERT",
+                "GPT",
+                "Speech Recognition",
+                "Sentiment Analysis"
+            ],
+            "hover_color": "emerald-600",
+            "priority": 4,
+            "status": "Completed",
+            "funding": "$280K AUD"
+        },
+        {
+            "id": 5,
+            "title": "Collaborative Emotion Spaces",
+            "description": "Virtual collaborative environments that visualize team emotions in real-time, enhancing remote teamwork and communication effectiveness.",
+            "image": "assets/images/projects/ai-empathy.jpg",
+            "url": "/projects/collaborative-spaces",
+            "category": {
+                "name": "HCI Research",
+                "color": "amber-600"
+            },
+            "duration": "2022-2023",
+            "team_size": "7 Researchers",
+            "technologies": [
+                "WebRTC",
+                "D3.js",
+                "React",
+                "Emotion APIs"
+            ],
+            "hover_color": "amber-600",
+            "priority": 5,
+            "status": "Completed",
+            "funding": "$195K AUD"
+        },
+        {
+            "id": 6,
+            "title": "MindBridge: Brain-Computer Emotional Interface",
+            "description": "Revolutionary BCI system that translates brain signals into emotional states, enabling direct emotional communication for individuals with communication disabilities.",
+            "image": "assets/images/projects/adaptive-ar.jpg",
+            "url": "/projects/mindbridge",
+            "category": {
+                "name": "BCI Research",
+                "color": "violet-600"
+            },
+            "duration": "2024-2027",
+            "team_size": "10 Researchers",
+            "technologies": [
+                "EEG Processing",
+                "Signal Processing",
+                "Deep Learning",
+                "Real-time Systems"
+            ],
+            "hover_color": "violet-600",
+            "priority": 6,
+            "status": "Active",
+            "funding": "$750K AUD"
+        },
+        {
+            "id": 7,
+            "title": "Therapeutic VR Environments",
+            "description": "Specialized virtual reality environments designed for mental health therapy, adapting scenarios based on patient emotional responses and therapeutic goals.",
+            "image": "assets/images/projects/emotivr.jpg",
+            "url": "/projects/therapeutic-vr",
+            "category": {
+                "name": "Health Tech",
+                "color": "rose-600"
+            },
+            "duration": "2023-2025",
+            "team_size": "9 Researchers",
+            "technologies": [
+                "Unity VR",
+                "Biometric Sensors",
+                "Psychology APIs",
+                "Data Analytics"
+            ],
+            "hover_color": "rose-600",
+            "priority": 7,
+            "status": "Active",
+            "funding": "$420K AUD"
+        },
+        {
+            "id": 8,
+            "title": "Smart Learning Companions",
+            "description": "AI-powered educational assistants that adapt teaching methods based on student emotional states and learning preferences, improving educational outcomes.",
+            "image": "assets/images/projects/ai-empathy.jpg",
+            "url": "/projects/smart-learning",
+            "category": {
+                "name": "EdTech Research",
+                "color": "teal-600"
+            },
+            "duration": "2022-2024",
+            "team_size": "8 Researchers",
+            "technologies": [
+                "Adaptive Learning",
+                "Emotion Recognition",
+                "Educational Psychology",
+                "Mobile Development"
+            ],
+            "hover_color": "teal-600",
+            "priority": 8,
+            "status": "Active",
+            "funding": "$365K AUD"
+        },
+        {
+            "id": 9,
+            "title": "Empathic Robotics Platform",
+            "description": "Social robots equipped with advanced emotion recognition capabilities for elderly care, providing companionship and emotional support in healthcare settings.",
+            "image": "assets/images/projects/adaptive-ar.jpg",
+            "url": "/projects/empathic-robotics",
+            "category": {
+                "name": "Robotics",
+                "color": "cyan-600"
+            },
+            "duration": "2021-2024",
+            "team_size": "11 Researchers",
+            "technologies": [
+                "ROS",
+                "Computer Vision",
+                "Natural Language",
+                "Robotic Hardware"
+            ],
+            "hover_color": "cyan-600",
+            "priority": 9,
+            "status": "Active",
+            "funding": "$580K AUD"
+        },
+        {
+            "id": 10,
+            "title": "Emotion-Driven Music Therapy",
+            "description": "Intelligent music therapy system that composes and adapts musical compositions in real-time based on user emotional states for therapeutic interventions.",
+            "image": "assets/images/projects/emotivr.jpg",
+            "url": "/projects/music-therapy",
+            "category": {
+                "name": "Music Tech",
+                "color": "indigo-600"
+            },
+            "duration": "2023-2024",
+            "team_size": "6 Researchers",
+            "technologies": [
+                "Audio Processing",
+                "Music Generation",
+                "Emotion Analytics",
+                "Digital Audio"
+            ],
+            "hover_color": "indigo-600",
+            "priority": 10,
+            "status": "Active",
+            "funding": "$240K AUD"
+        },
+        {
+            "id": 11,
+            "title": "Workplace Emotion Analytics",
+            "description": "Enterprise platform that monitors workplace emotional climate through various sensors and communications, providing insights for improving team productivity and well-being.",
+            "image": "assets/images/projects/ai-empathy.jpg",
+            "url": "/projects/workplace-analytics",
+            "category": {
+                "name": "Enterprise Tech",
+                "color": "slate-600"
+            },
+            "duration": "2022-2025",
+            "team_size": "7 Researchers",
+            "technologies": [
+                "IoT Sensors",
+                "Data Analytics",
+                "Dashboard Design",
+                "Privacy Engineering"
+            ],
+            "hover_color": "slate-600",
+            "priority": 11,
+            "status": "Active",
+            "funding": "$310K AUD"
+        },
+        {
+            "id": 12,
+            "title": "Cross-Cultural Emotion Recognition",
+            "description": "Research project investigating how emotional expressions vary across cultures, developing culturally-aware emotion recognition systems for global applications.",
+            "image": "assets/images/projects/adaptive-ar.jpg",
+            "url": "/projects/cross-cultural",
+            "category": {
+                "name": "Cultural Studies",
+                "color": "orange-600"
+            },
+            "duration": "2021-2023",
+            "team_size": "9 Researchers",
+            "technologies": [
+                "Cross-Cultural Data",
+                "Statistical Analysis",
+                "Cultural Psychology",
+                "Global Datasets"
+            ],
+            "hover_color": "orange-600",
+            "priority": 12,
+            "status": "Completed",
+            "funding": "$285K AUD"
+        }
+    ],
+    "stats": {
+        "total_projects": 12,
+        "active_projects": 9,
+        "completed_projects": 3,
+        "total_funding": "$4.9M AUD",
+        "total_researchers": 98,
+        "average_duration": "2.3 years"
+    },
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2025-01-14",
+        "total_count": 12,
+        "section_type": "all_projects"
+    }
+}

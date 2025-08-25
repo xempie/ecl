@@ -1,0 +1,143 @@
+{
+    "section": {
+        "title": "Latest Publications",
+        "subtitle": "Academic Impact",
+        "description": "Our recent research contributions to the scientific community, published in top-tier conferences and journals.",
+        "view_all_link": "/research/publications",
+        "view_all_text": "View All Publications"
+    },
+    "publications": [
+        {
+            "id": 1,
+            "title": "Empathic AI Interfaces: Designing Emotionally Intelligent Systems for Enhanced Human-Computer Interaction",
+            "description": "This paper presents a novel framework for developing AI interfaces that can recognize, understand, and respond to human emotions in real-time, significantly improving user satisfaction and task performance.",
+            "authors": [
+                {
+                    "name": "Dr. Sarah Johnson",
+                    "lead": true
+                },
+                {
+                    "name": "Dr. Michael Chen",
+                    "lead": false
+                },
+                {
+                    "name": "Dr. Emily Rodriguez",
+                    "lead": false
+                }
+            ],
+            "conference": "CHI 2024",
+            "published_date": "March 2024",
+            "views": 2847,
+            "citations": 156,
+            "image": "assets/images/publications/chi-2024.jpg",
+            "url": "/publications/empathic-ai-interfaces",
+            "border_color": "blue-400",
+            "bg_color": "blue-100",
+            "text_color": "blue-500",
+            "hover_color": "blue-400",
+            "badges": [
+                {
+                    "text": "CHI 2024",
+                    "bg_color": "blue-100",
+                    "text_color": "blue-500"
+                },
+                {
+                    "text": "Best Paper Award",
+                    "bg_color": "emerald-100",
+                    "text_color": "emerald-500"
+                }
+            ],
+            "priority": 1
+        },
+        {
+            "id": 2,
+            "title": "Emotion-Aware Virtual Reality: Real-time Adaptation of Virtual Environments Based on User Affective States",
+            "description": "We introduce a VR system that dynamically modifies virtual environments based on real-time emotion recognition, creating more engaging and therapeutic virtual experiences.",
+            "authors": [
+                {
+                    "name": "Dr. Alex Thompson",
+                    "lead": true
+                },
+                {
+                    "name": "Dr. Lisa Wang",
+                    "lead": false
+                },
+                {
+                    "name": "Dr. James Miller",
+                    "lead": false
+                }
+            ],
+            "conference": "IEEEVR 2024",
+            "published_date": "February 2024",
+            "views": 1923,
+            "citations": 89,
+            "image": "assets/images/publications/ieeevr-2024.jpg",
+            "url": "/publications/emotion-aware-vr",
+            "border_color": "emerald-400",
+            "bg_color": "emerald-100",
+            "text_color": "emerald-500",
+            "hover_color": "emerald-400",
+            "badges": [
+                {
+                    "text": "IEEEVR 2024",
+                    "bg_color": "emerald-100",
+                    "text_color": "emerald-500"
+                },
+                {
+                    "text": "Oral Presentation",
+                    "bg_color": "violet-100",
+                    "text_color": "violet-500"
+                }
+            ],
+            "priority": 2
+        },
+        {
+            "id": 3,
+            "title": "Multimodal Emotion Recognition in Augmented Reality: Combining Facial Expression, Voice, and Physiological Signals",
+            "description": "A comprehensive approach to emotion recognition in AR environments using multiple data streams, achieving 94.7% accuracy in real-world testing scenarios.",
+            "authors": [
+                {
+                    "name": "Dr. Maria Garcia",
+                    "lead": true
+                },
+                {
+                    "name": "Dr. David Lee",
+                    "lead": false
+                },
+                {
+                    "name": "Dr. Anna Kowalski",
+                    "lead": false
+                }
+            ],
+            "conference": "Nature Communications",
+            "published_date": "January 2024",
+            "views": 4156,
+            "citations": 234,
+            "image": "assets/images/publications/nature-2024.jpg",
+            "url": "/publications/multimodal-emotion-recognition",
+            "border_color": "violet-400",
+            "bg_color": "violet-100",
+            "text_color": "violet-500",
+            "hover_color": "violet-400",
+            "badges": [
+                {
+                    "text": "Nature Communications",
+                    "bg_color": "violet-100",
+                    "text_color": "violet-500"
+                },
+                {
+                    "text": "High Impact",
+                    "bg_color": "amber-100",
+                    "text_color": "amber-500"
+                }
+            ],
+            "priority": 3
+        }
+    ],
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2025-01-14",
+        "total_count": 3,
+        "section_type": "publications"
+    }
+}

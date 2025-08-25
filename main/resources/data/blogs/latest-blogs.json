@@ -1,0 +1,98 @@
+{
+    "section": {
+        "title": "Latest News & Insights",
+        "subtitle": "Stay Updated",
+        "description": "Discover the latest developments in empathic computing, research breakthroughs, and insights from our lab.",
+        "view_all_link": "/news",
+        "view_all_text": "View All News"
+    },
+    "blogs": [
+        {
+            "id": 1,
+            "title": "Breakthrough in AI Empathy: New Algorithm Achieves 97% Emotion Recognition Accuracy",
+            "description": "Our research team has developed a groundbreaking AI algorithm that can recognize human emotions with unprecedented accuracy, marking a significant milestone in empathic computing.",
+            "excerpt": "Our research team has developed a groundbreaking AI algorithm that can recognize human emotions with unprecedented accuracy, marking a significant milestone in empathic computing.",
+            "image": "assets/images/blog/ai-breakthrough.jpg",
+            "author": {
+                "name": "Dr. Johnson",
+                "full_name": "Dr. Sarah Johnson",
+                "image": "assets/images/team/dr-johnson.jpg"
+            },
+            "published_date": "March 15, 2024",
+            "read_time": "5 min read",
+            "views": 1234,
+            "url": "/news/ai-breakthrough-empathic-computing",
+            "category": {
+                "name": "Research",
+                "color": "blue-600"
+            },
+            "tags": [
+                "AI",
+                "Machine Learning",
+                "Emotion Recognition"
+            ],
+            "hover_color": "blue-600",
+            "priority": 1
+        },
+        {
+            "id": 2,
+            "title": "IEEE VR 2024: Our Lab Presents Three Groundbreaking Papers on Emotion-Aware VR",
+            "description": "Team members successfully presented our latest research on emotion-aware virtual reality systems at the prestigious IEEE VR conference, receiving outstanding feedback from the international community.",
+            "excerpt": "Team members successfully presented our latest research on emotion-aware virtual reality systems at the prestigious IEEE VR conference, receiving outstanding feedback from the international community.",
+            "image": "assets/images/blog/vr-conference.jpg",
+            "author": {
+                "name": "Dr. Chen",
+                "full_name": "Dr. Michael Chen",
+                "image": "assets/images/team/dr-chen.jpg"
+            },
+            "published_date": "March 8, 2024",
+            "read_time": "3 min read",
+            "views": 892,
+            "url": "/news/ieee-vr-conference-success",
+            "category": {
+                "name": "Events",
+                "color": "green-600"
+            },
+            "tags": [
+                "VR",
+                "Conference",
+                "Research"
+            ],
+            "hover_color": "green-600",
+            "priority": 2
+        },
+        {
+            "id": 3,
+            "title": "Major Tech Giants Partner with Our Lab for Next-Gen Empathic Computing Solutions",
+            "description": "We're excited to announce strategic partnerships with leading technology companies to accelerate the development and deployment of empathic computing technologies in real-world applications.",
+            "excerpt": "We're excited to announce strategic partnerships with leading technology companies to accelerate the development and deployment of empathic computing technologies in real-world applications.",
+            "image": "assets/images/blog/industry-partnership.jpg",
+            "author": {
+                "name": "Dr. Rodriguez",
+                "full_name": "Dr. Emily Rodriguez",
+                "image": "assets/images/team/dr-rodriguez.jpg"
+            },
+            "published_date": "February 28, 2024",
+            "read_time": "4 min read",
+            "views": 2156,
+            "url": "/news/tech-giants-partnership",
+            "category": {
+                "name": "Partnership",
+                "color": "purple-600"
+            },
+            "tags": [
+                "Partnership",
+                "Industry",
+                "Innovation"
+            ],
+            "hover_color": "purple-600",
+            "priority": 3
+        }
+    ],
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2025-01-14",
+        "total_count": 3,
+        "section_type": "blogs"
+    }
+}

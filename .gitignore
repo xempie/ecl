@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+/build
+/dist
+
+# Environment files
+.env
+.env.local
+.env.production
+.env.staging
+
+# Log files
+*.log
+storage/logs/*.log
+
+# Cache files
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+bootstrap/cache/*.php
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Laravel specific
+/public/hot
+/public/storage
+/storage/*.key
+
+# Composer
+composer.phar
+
+# NPM debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# PNPM
+.pnpm-debug.log*
+
+# Other
+*.tmp
+*.temp

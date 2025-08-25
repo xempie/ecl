@@ -1,0 +1,135 @@
+{
+    "section": {
+        "title": "Research Publications",
+        "subtitle": "Our Latest Publications",
+        "description": "Explore our research contributions that are advancing the field of empathic computing and human-computer interaction."
+    },
+    "publications": [
+        {
+            "id": 1,
+            "title": "Empathic Computing: Bridging the Gap Between Human Emotions and AI",
+            "authors": "Prof. Mark Billinghurst, Dr. Sarah Chen",
+            "venue": "ACM Transactions on Computer-Human Interaction",
+            "year": "2024",
+            "abstract": "This paper presents a comprehensive framework for developing empathic computing systems that can recognize, understand, and respond to human emotions in real-time.",
+            "type": "journal",
+            "priority": 1
+        },
+        {
+            "id": 2,
+            "title": "Real-time Emotion Recognition in Virtual Reality Environments",
+            "authors": "Dr. James Rodriguez, Dr. Emily Watson",
+            "venue": "IEEE Virtual Reality Conference",
+            "year": "2024",
+            "abstract": "We explore novel methods for detecting emotional states in VR environments using multimodal sensor data and machine learning algorithms.",
+            "type": "conference",
+            "priority": 2
+        },
+        {
+            "id": 3,
+            "title": "Adaptive User Interfaces for Emotional Computing Systems",
+            "authors": "Dr. Lisa Thompson, Dr. Michael Kim",
+            "venue": "CHI Conference on Human Factors in Computing",
+            "year": "2023",
+            "abstract": "This work investigates how user interfaces can dynamically adapt based on detected emotional states to improve user experience and engagement.",
+            "type": "conference",
+            "priority": 3
+        },
+        {
+            "id": 4,
+            "title": "Collaborative Empathic Systems: Design Principles and Applications",
+            "authors": "Dr. Alex Patel, Prof. Mark Billinghurst",
+            "venue": "Computer Supported Cooperative Work",
+            "year": "2023",
+            "abstract": "We present design principles for creating collaborative systems that facilitate empathic communication between remote users.",
+            "type": "journal",
+            "priority": 4
+        },
+        {
+            "id": 5,
+            "title": "Machine Learning Approaches for Emotion Recognition in Educational Settings",
+            "authors": "Dr. Rachel Green, Dr. Sarah Chen",
+            "venue": "International Conference on Artificial Intelligence in Education",
+            "year": "2023",
+            "abstract": "This study examines the application of empathic computing in educational environments to enhance student learning outcomes.",
+            "type": "conference",
+            "priority": 5
+        },
+        {
+            "id": 6,
+            "title": "Ethical Considerations in Empathic AI Systems",
+            "authors": "Dr. Emily Watson, Dr. Lisa Thompson",
+            "venue": "AI Ethics Journal",
+            "year": "2023",
+            "abstract": "We discuss the ethical implications of systems that can detect and respond to human emotions, including privacy and consent considerations.",
+            "type": "journal",
+            "priority": 6
+        },
+        {
+            "id": 7,
+            "title": "Cross-Cultural Emotion Recognition in Computing Systems",
+            "authors": "Dr. Michael Kim, Dr. Alex Patel",
+            "venue": "International Journal of Human-Computer Studies",
+            "year": "2022",
+            "abstract": "This research explores how cultural differences affect emotion expression and recognition in computing systems.",
+            "type": "journal",
+            "priority": 7
+        },
+        {
+            "id": 8,
+            "title": "Physiological Signal Processing for Emotion Detection",
+            "authors": "Dr. James Rodriguez, Dr. Rachel Green",
+            "venue": "IEEE Transactions on Biomedical Engineering",
+            "year": "2022",
+            "abstract": "We present advanced signal processing techniques for extracting emotional indicators from physiological sensors.",
+            "type": "journal",
+            "priority": 8
+        },
+        {
+            "id": 9,
+            "title": "Augmented Reality Interfaces for Empathic Communication",
+            "authors": "Prof. Mark Billinghurst, Dr. Lisa Thompson",
+            "venue": "ISMAR - International Symposium on Mixed and Augmented Reality",
+            "year": "2022",
+            "abstract": "This work explores how AR can be used to enhance empathic communication by visualizing emotional states and social cues.",
+            "type": "conference",
+            "priority": 9
+        },
+        {
+            "id": 10,
+            "title": "Longitudinal Study of Empathic Computing in Healthcare",
+            "authors": "Dr. Sarah Chen, Dr. Emily Watson",
+            "venue": "Journal of Medical Internet Research",
+            "year": "2022",
+            "abstract": "A comprehensive study examining the long-term effects of empathic computing systems in healthcare settings.",
+            "type": "journal",
+            "priority": 10
+        },
+        {
+            "id": 11,
+            "title": "Natural Language Processing for Emotional Intelligence",
+            "authors": "Dr. Michael Kim, Dr. Rachel Green",
+            "venue": "Computational Linguistics",
+            "year": "2021",
+            "abstract": "This paper presents novel NLP techniques for understanding emotional content in human communication.",
+            "type": "journal",
+            "priority": 11
+        },
+        {
+            "id": 12,
+            "title": "Designing Empathic Robots for Social Interaction",
+            "authors": "Dr. Alex Patel, Dr. James Rodriguez",
+            "venue": "International Conference on Social Robotics",
+            "year": "2021",
+            "abstract": "We explore the design principles for creating robots capable of empathic social interaction with humans.",
+            "type": "conference",
+            "priority": 12
+        }
+    ],
+    "metadata": {
+        "version": "1.0",
+        "last_updated": "2025-01-14",
+        "total_count": 12,
+        "section_type": "publications"
+    }
+}
