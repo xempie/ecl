@@ -40,9 +40,10 @@
                 <li class="has-submenu parent-menu-item">
                     <a href="javascript:void(0)">Team</a><span class="menu-arrow"></span>
                     <ul class="submenu">
-                        <li><a href="{{ url('/team/faculty') }}" class="sub-menu-item">Faculty</a></li>
-                        <li><a href="{{ url('/team/students') }}" class="sub-menu-item">Students</a></li>
+                        <li><a href="{{ url('/team') }}" class="sub-menu-item">Lab Members</a></li>
+                        <li><a href="{{ url('/team/alumni') }}" class="sub-menu-item">Alumni</a></li>
                         <li><a href="{{ url('/team/collaborators') }}" class="sub-menu-item">Collaborators</a></li>
+                        <li><a href="{{ url('/team/virtual-interns') }}" class="sub-menu-item">Virtual Interns</a></li>
                     </ul>
                 </li>
 

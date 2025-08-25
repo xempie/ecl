@@ -84,7 +84,7 @@ foreach ($publications as $index => $publication) {
 @endphp
 
 <!-- Publications Section -->
-<section class="relative md:py-24 py-16 publications-diagonal-bg">
+<section class="relative md:py-24 py-16 bg-white">
     <div class="container relative">
         <!-- Section Header -->
         <div class="grid md:grid-cols-12 grid-cols-1 pb-8 items-end">
@@ -273,12 +273,15 @@ foreach ($publications as $index => $publication) {
                     
                     <!-- Action Buttons -->
                     <div class="flex flex-col gap-2 ml-6">
-                        <a href="{{ $publication['url'] }}" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-{{ $publication['text_color'] }} hover:bg-{{ str_replace('-600', '-700', $publication['text_color']) }} text-white rounded-full" title="View Publication">
-                            <i class="uil uil-eye"></i>
-                        </a>
-                        <a href="#" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full" title="Download PDF">
-                            <i class="uil uil-download-alt"></i>
-                        </a>
+                        @if(isset($publication['pdf_url']) && !empty($publication['pdf_url']))
+                            <a href="{{ $publication['pdf_url'] }}" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full" title="Download PDF" target="_blank">
+                                <i class="uil uil-download-alt"></i>
+                            </a>
+                        @else
+                            <a href="{{ $publication['url'] }}" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full" title="View Publication" target="_blank">
+                                <i class="uil uil-link"></i>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
