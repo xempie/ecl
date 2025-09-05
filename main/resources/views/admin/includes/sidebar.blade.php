@@ -44,7 +44,7 @@
             </li>
 
             <li class="sidebar-dropdown">
-                <a href="javascript:void(0)"><i class="uil uil-tag-alt me-2"></i>Research Topics Management</a>
+                <a href="javascript:void(0)"><i class="uil uil-tag-alt me-2"></i>Manage Topics</a>
                 <div class="sidebar-submenu">
                     <ul>
                         <li><a href="{{ route('admin.categories') }}">All Research Topics</a></li>
