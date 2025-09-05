@@ -17,13 +17,9 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact-us');
 
 // Research subpages
-Route::get('/research/projects', function () {
-    return view('research.projects');
-})->name('research.projects');
+Route::get('/research/projects', [HomeController::class, 'projects'])->name('research.projects');
 
-Route::get('/research/publications', function () {
-    return view('research.publications');
-})->name('research.publications');
+Route::get('/research/publications', [HomeController::class, 'publications'])->name('research.publications');
 
 Route::get('/research/areas', function () {
     return view('research.areas');

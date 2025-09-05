@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Member;
 use App\Models\Publication;
 use App\Models\Project;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -83,6 +84,37 @@ class HomeController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+
+    /**
+     * Display the publications page
+     */
+    public function publications()
+    {
+        $publications = Publication::with(['categories', 'members'])
+            ->active()
+            ->orderBy('year', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
+
+        $categories = Category::active()->ordered()->get();
+
+        return view('research.publications', compact('publications', 'categories'));
+    }
+
+    /**
+     * Display the projects page
+     */
+    public function projects()
+    {
+        $projects = Project::with(['categories', 'members'])
+            ->active()
+            ->ordered()
+            ->paginate(12);
+
+        $categories = Category::active()->ordered()->get();
+
+        return view('research.projects', compact('projects', 'categories'));
     }
 
     /**
