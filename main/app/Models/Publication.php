@@ -68,6 +68,11 @@ class Publication extends Model
     }
 
     // Scopes
+    public function scopeActive($query)
+    {
+        return $query->whereIn('status', ['published', 'in_press']);
+    }
+
     public function scopePublished($query)
     {
         return $query->where('status', 'published');
