@@ -123,7 +123,7 @@ class HomeController extends Controller
         $query->orderBy('year', 'desc')
               ->orderBy('created_at', 'desc');
 
-        $publications = $query->paginate(12)->appends($request->query());
+        $publications = $query->paginate(50)->appends($request->query());
 
         $categories = Category::active()->ordered()->get();
 
