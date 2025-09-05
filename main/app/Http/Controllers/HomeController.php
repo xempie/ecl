@@ -89,13 +89,41 @@ class HomeController extends Controller
     /**
      * Display the publications page
      */
-    public function publications()
+    public function publications(Request $request)
     {
-        $publications = Publication::with(['categories', 'members'])
-            ->active()
-            ->orderBy('year', 'desc')
-            ->orderBy('created_at', 'desc')
-            ->paginate(12);
+        $query = Publication::with(['categories', 'members'])->active();
+
+        // Apply filters
+        if ($request->filled('year')) {
+            $query->where('year', $request->year);
+        }
+
+        if ($request->filled('topic')) {
+            $query->whereHas('categories', function ($q) use ($request) {
+                $q->where('slug', $request->topic);
+            });
+        }
+
+        if ($request->filled('type')) {
+            $query->where('type', $request->type);
+        }
+
+        if ($request->filled('search')) {
+            $searchTerm = $request->search;
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('title', 'LIKE', '%' . $searchTerm . '%')
+                  ->orWhere('authors', 'LIKE', '%' . $searchTerm . '%')
+                  ->orWhere('abstract', 'LIKE', '%' . $searchTerm . '%')
+                  ->orWhere('journal', 'LIKE', '%' . $searchTerm . '%')
+                  ->orWhere('conference', 'LIKE', '%' . $searchTerm . '%');
+            });
+        }
+
+        // Apply sorting
+        $query->orderBy('year', 'desc')
+              ->orderBy('created_at', 'desc');
+
+        $publications = $query->paginate(12)->appends($request->query());
 
         $categories = Category::active()->ordered()->get();
 
@@ -105,12 +133,37 @@ class HomeController extends Controller
     /**
      * Display the projects page
      */
-    public function projects()
+    public function projects(Request $request)
     {
-        $projects = Project::with(['categories', 'members'])
-            ->active()
-            ->ordered()
-            ->paginate(12);
+        $query = Project::with(['categories', 'members'])->active();
+
+        // Apply filters
+        if ($request->filled('year')) {
+            $query->where('year', $request->year);
+        }
+
+        if ($request->filled('topic')) {
+            $query->whereHas('categories', function ($q) use ($request) {
+                $q->where('slug', $request->topic);
+            });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        if ($request->filled('search')) {
+            $searchTerm = $request->search;
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('title', 'LIKE', '%' . $searchTerm . '%')
+                  ->orWhere('description', 'LIKE', '%' . $searchTerm . '%');
+            });
+        }
+
+        // Apply sorting
+        $query->ordered();
+
+        $projects = $query->paginate(12)->appends($request->query());
 
         $categories = Category::active()->ordered()->get();
 

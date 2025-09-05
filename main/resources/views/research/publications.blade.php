@@ -51,29 +51,122 @@
             </div>
         </div><!--end grid-->
 
-        <!-- Research Topics Filter -->
-        @if($categories->count() > 0)
+        <!-- Advanced Filter Section -->
         <div class="relative mb-12">
-            <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 shadow-sm">
-                <div class="flex items-center mb-4">
-                    <div class="size-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                        <i class="uil uil-tag-alt text-white text-sm"></i>
+            <div class="bg-gray-100 dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-slate-600">
+                <!-- Filter Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="size-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                            <i class="uil uil-filter text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-slate-900 dark:text-white">Filter Publications</h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Find research by year, topic, or publication type</p>
+                        </div>
                     </div>
-                    <h4 class="text-lg font-semibold text-slate-900 dark:text-white">Research Topics</h4>
+                    <button id="resetFilters" class="text-sm font-medium text-blue-600 hover:text-blue-700 duration-300 flex items-center space-x-1">
+                        <i class="uil uil-redo text-xs"></i>
+                        <span>Reset Filters</span>
+                    </button>
                 </div>
-                <div class="flex flex-wrap gap-3">
-                    <a href="{{ route('research.publications') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
-                        All Publications
-                    </a>
-                    @foreach($categories as $category)
-                        <a href="{{ route('research.publications') }}?topic={{ $category->slug }}" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors border" style="border-color: {{ $category->color }}; color: {{ $category->color }};" onmouseover="this.style.backgroundColor='{{ $category->color }}'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='{{ $category->color }}';">
-                            {{ $category->name }}
-                        </a>
-                    @endforeach
-                </div>
+
+                <!-- Filter Form -->
+                <form method="GET" action="{{ route('research.publications') }}" class="filter-form">
+                    <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
+                        
+                        <!-- Year Filter -->
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 flex items-center space-x-2">
+                                <i class="uil uil-calendar-alt text-emerald-600"></i>
+                                <span>Publication Year</span>
+                            </label>
+                            <div class="relative">
+                                <select name="year" class="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all duration-300 appearance-none cursor-pointer">
+                                    <option value="">All Years</option>
+                                    @php
+                                        $currentYear = date('Y');
+                                        $startYear = 2015; // Adjust based on your oldest publications
+                                    @endphp
+                                    @for($year = $currentYear; $year >= $startYear; $year--)
+                                        <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>{{ $year }}</option>
+                                    @endfor
+                                </select>
+                                <i class="uil uil-angle-down absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Research Topic Filter -->
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 flex items-center space-x-2">
+                                <i class="uil uil-tag-alt text-violet-600"></i>
+                                <span>Research Topic</span>
+                            </label>
+                            <div class="relative">
+                                <select name="topic" class="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition-all duration-300 appearance-none cursor-pointer">
+                                    <option value="">All Topics</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->slug }}" {{ request('topic') == $category->slug ? 'selected' : '' }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                <i class="uil uil-angle-down absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Publication Type Filter -->
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 flex items-center space-x-2">
+                                <i class="uil uil-file-alt text-amber-600"></i>
+                                <span>Publication Type</span>
+                            </label>
+                            <div class="relative">
+                                <select name="type" class="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all duration-300 appearance-none cursor-pointer">
+                                    <option value="">All Types</option>
+                                    @foreach(\App\Models\Publication::getPublicationTypes() as $key => $label)
+                                        <option value="{{ $key }}" {{ request('type') == $key ? 'selected' : '' }}>{{ $label }}</option>
+                                    @endforeach
+                                </select>
+                                <i class="uil uil-angle-down absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Search Filter -->
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3 flex items-center space-x-2">
+                                <i class="uil uil-search text-blue-600"></i>
+                                <span>Search</span>
+                            </label>
+                            <div class="relative">
+                                <input type="text" name="search" value="{{ request('search') }}" placeholder="Search titles, authors..." class="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-600 rounded-xl text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all duration-300">
+                                <i class="uil uil-search absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filter Actions -->
+                    <div class="flex flex-wrap items-center justify-between mt-6 pt-6 border-t border-gray-200 dark:border-slate-600">
+                        <div class="flex flex-wrap items-center gap-3 mb-3 md:mb-0">
+                            <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-colors duration-300 flex items-center space-x-2">
+                                <i class="uil uil-filter text-sm"></i>
+                                <span>Apply Filters</span>
+                            </button>
+                            <button type="button" id="clearFilters" class="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-xl transition-colors duration-300 flex items-center space-x-2">
+                                <i class="uil uil-times text-sm"></i>
+                                <span>Clear All</span>
+                            </button>
+                        </div>
+                        
+                        <div class="text-sm text-slate-500 dark:text-slate-400">
+                            @if(request()->hasAny(['year', 'topic', 'type', 'search']))
+                                <span class="font-medium">Filtered Results:</span> {{ $publications->total() }} publications
+                            @else
+                                <span class="font-medium">Total:</span> {{ $publications->total() }} publications
+                            @endif
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        @endif
 
         <!-- Publications List -->
         <div class="grid grid-cols-1 gap-8">
@@ -203,3 +296,48 @@
 </section><!--end section-->
 
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-submit form when select options change
+    const filterSelects = document.querySelectorAll('.filter-form select');
+    filterSelects.forEach(select => {
+        select.addEventListener('change', function() {
+            this.form.submit();
+        });
+    });
+
+    // Clear filters functionality
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    const resetFiltersBtn = document.getElementById('resetFilters');
+    
+    function clearAllFilters() {
+        const form = document.querySelector('.filter-form');
+        form.reset();
+        // Clear URL parameters by submitting empty form
+        window.location.href = "{{ route('research.publications') }}";
+    }
+
+    if (clearFiltersBtn) {
+        clearFiltersBtn.addEventListener('click', clearAllFilters);
+    }
+    
+    if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', clearAllFilters);
+    }
+
+    // Search input debounce
+    const searchInput = document.querySelector('input[name="search"]');
+    if (searchInput) {
+        let searchTimeout;
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                this.form.submit();
+            }, 500); // Wait 500ms after user stops typing
+        });
+    }
+});
+</script>
+@endpush

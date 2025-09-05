@@ -74,26 +74,57 @@
             </div>
         </div>
 
-        <!-- Research Topics Filter -->
+        <!-- Project Filters -->
         @if($categories->count() > 0)
         <div class="relative mb-12">
             <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 shadow-sm">
                 <div class="flex items-center mb-4">
                     <div class="size-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
-                        <i class="uil uil-tag-alt text-white text-sm"></i>
+                        <i class="uil uil-filter text-white text-sm"></i>
                     </div>
-                    <h4 class="text-lg font-semibold text-slate-900 dark:text-white">Research Topics</h4>
+                    <h4 class="text-lg font-semibold text-slate-900 dark:text-white">Filter Projects</h4>
                 </div>
-                <div class="flex flex-wrap gap-3">
-                    <a href="{{ route('research.projects') }}" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
-                        All Projects
-                    </a>
-                    @foreach($categories as $category)
-                        <a href="{{ route('research.projects') }}?topic={{ $category->slug }}" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors border" style="border-color: {{ $category->color }}; color: {{ $category->color }};" onmouseover="this.style.backgroundColor='{{ $category->color }}'; this.style.color='white';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='{{ $category->color }}';">
-                            {{ $category->name }}
+                
+                <form method="GET" action="{{ route('research.projects') }}" class="project-filter-form">
+                    <div class="grid md:grid-cols-3 grid-cols-1 gap-4 mb-4">
+                        <!-- Research Topic Filter -->
+                        <div>
+                            <select name="topic" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-600 rounded-lg text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                <option value="">All Research Topics</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->slug }}" {{ request('topic') == $category->slug ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
+                        <!-- Status Filter -->
+                        <div>
+                            <select name="status" class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-600 rounded-lg text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                                <option value="">All Status</option>
+                                <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Active</option>
+                                <option value="completed" {{ request('status') == 'completed' ? 'selected' : '' }}>Completed</option>
+                                <option value="on_hold" {{ request('status') == 'on_hold' ? 'selected' : '' }}>On Hold</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Search -->
+                        <div>
+                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Search projects..." class="w-full px-3 py-2 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-600 rounded-lg text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-3">
+                        <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors">
+                            Apply Filters
+                        </button>
+                        <a href="{{ route('research.projects') }}" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors">
+                            Clear All
                         </a>
-                    @endforeach
-                </div>
+                        @if(request()->hasAny(['topic', 'status', 'search']))
+                            <span class="text-sm text-slate-500">{{ $projects->total() }} filtered results</span>
+                        @endif
+                    </div>
+                </form>
             </div>
         </div>
         @endif
@@ -222,3 +253,29 @@
 </section><!--end section-->
 
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-submit form when select options change for projects
+    const projectFilterSelects = document.querySelectorAll('.project-filter-form select');
+    projectFilterSelects.forEach(select => {
+        select.addEventListener('change', function() {
+            this.form.submit();
+        });
+    });
+
+    // Search input debounce for projects
+    const projectSearchInput = document.querySelector('.project-filter-form input[name="search"]');
+    if (projectSearchInput) {
+        let searchTimeout;
+        projectSearchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                this.form.submit();
+            }, 500); // Wait 500ms after user stops typing
+        });
+    }
+});
+</script>
+@endpush
