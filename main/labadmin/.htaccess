@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Handle Angular and AngularJS requests for specific file extensions
+RewriteCond %{REQUEST_URI} ^(.+\.(?:css|js|jpe?g|png|gif|ico|svg|woff2?|ttf|eot))$ [NC]
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Handle all other requests
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ public/index.php [QSA,L]
+
+# Serve existing files and directories from public
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]

@@ -19,15 +19,6 @@
         </div><!--end grid-->
     </div><!--end container-->
     
-    <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
-        <ul class="tracking-[0.5px] mb-0 inline-block">
-            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ route('home') }}">Empathic Computing Lab</a></li>
-            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
-            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white"><a href="{{ route('about') }}">About</a></li>
-            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180"><i class="uil uil-angle-right-b"></i></li>
-            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">Team</li>
-        </ul>
-    </div>
 </section><!--end section-->
 <div class="relative">
     <div class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white dark:text-slate-900">
@@ -107,106 +98,159 @@
 
     </div><!--end container-->
 
+    <!-- Director Section -->
+    @if($director)
     <div class="container relative md:mt-24 mt-16">
         <div class="grid grid-cols-1 pb-8 text-center">
-            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Our Research Team</h3>
-
-            <p class="text-slate-400 max-w-xl mx-auto">Meet our dedicated team of researchers, faculty members, and graduate students who are pushing the boundaries of empathic computing technology.</p>
+            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Research Director</h3>
         </div><!--end grid-->
 
-        <div class="grid md:grid-cols-12 grid-cols-1 mt-8 gap-[30px]">
-
-            @php
-            $teams = [
-                [
-                    'img' => 'assets/images/team/team.jpg',
-                    'name' => 'Prof. Mark Billinghurst',
-                    'title' => 'Director & Founder',
-                    'desc' => "Leading pioneer in empathic computing research with over 500 publications in AR/VR and HCI.",
-                    'style' => 'bg-blue-400/50 dark:bg-blue-400/50',
-                    'color' => 'hover:text-blue-400',
-                ],
-                [
-                    'img' => 'assets/images/team/team.jpg',
-                    'name' => 'Dr. Sarah Chen',
-                    'title' => 'Senior Researcher',
-                    'desc' => "Expert in AI emotion recognition and machine learning applications for empathic systems.",
-                    'style' => 'bg-emerald-400/50 dark:bg-emerald-400/50',
-                    'color' => 'hover:text-emerald-400',
-                ],
-                [
-                    'img' => 'assets/images/team/team.jpg',
-                    'name' => 'Dr. James Rodriguez',
-                    'title' => 'VR Research Lead',
-                    'desc' => "Specializes in immersive virtual environments and therapeutic VR applications.",
-                    'style' => 'bg-violet-400/50 dark:bg-violet-400/50',
-                    'color' => 'hover:text-violet-400',
-                ],
-                [
-                    'img' => 'assets/images/team/team.jpg',
-                    'name' => 'Dr. Emily Watson',
-                    'title' => 'Psychology Researcher',
-                    'desc' => "Bridges psychology and technology to understand human emotional responses to computing systems.",
-                    'style' => 'bg-amber-400/50 dark:bg-amber-400/50',
-                    'color' => 'hover:text-amber-400',
-                ],
-                [
-                    'img' => 'assets/images/team/team.jpg',
-                    'name' => 'Dr. Michael Kim',
-                    'title' => 'AI Systems Developer',
-                    'desc' => "Develops cutting-edge AI algorithms for real-time emotion recognition and response systems.",
-                    'style' => 'bg-blue-400/50 dark:bg-blue-400/50',
-                    'color' => 'hover:text-blue-400',
-                ],
-                [
-                    'img' => 'assets/images/team/team.jpg',
-                    'name' => 'Dr. Lisa Thompson',
-                    'title' => 'UX Research Director',
-                    'desc' => "Focuses on human-centered design for empathic computing interfaces and user experience.",
-                    'style' => 'bg-emerald-400/50 dark:bg-emerald-400/50',
-                    'color' => 'hover:text-emerald-400',
-                ],
-                [
-                    'img' => 'assets/images/team/team.jpg',
-                    'name' => 'Dr. Alex Patel',
-                    'title' => 'Collaborative Systems Lead',
-                    'desc' => "Researches collaborative interfaces that facilitate empathic communication between users.",
-                    'style' => 'bg-violet-400/50 dark:bg-violet-400/50',
-                    'color' => 'hover:text-violet-400',
-                ],
-                [
-                    'img' => 'assets/images/team/team.jpg',
-                    'name' => 'Dr. Rachel Green',
-                    'title' => 'Graduate Program Coordinator',
-                    'desc' => "Mentors PhD and Masters students in empathic computing research methodologies.",
-                    'style' => 'bg-amber-400/50 dark:bg-amber-400/50',
-                    'color' => 'hover:text-amber-400',
-                ]
-            ];
-            @endphp
-
-            @foreach ($teams as $item)
-                <div class="lg:col-span-3 md:col-span-6 h-full">
-                    <div class="team p-6 rounded-md border border-gray-100 dark:border-gray-800 group bg-white dark:bg-slate-900 h-full flex flex-col">
-                        <img src="{{ asset($item['img']) }}" class="size-24 rounded-full shadow-md dark:shadow-gray-800" alt="">
-
-                        <div class="content mt-4 flex-1 flex flex-col">
-                            <a href="" class="text-lg font-medium {{ $item['color'] }} block">{{ $item['name'] }}</a>
-                            <span class="text-slate-400 block">{{ $item['title'] }}</span>
-
-                            <p class="text-slate-400 mt-4 flex-1">{{ $item['desc'] }}</p>
-
-                            <ul class="list-none mt-4">
-                                <li class="inline"><a href="" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-100 dark:border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 hover:text-white"><i data-feather="facebook" class="size-4"></i></a></li>
-                                <li class="inline"><a href="" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-100 dark:border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 hover:text-white"><i data-feather="instagram" class="size-4"></i></a></li>
-                                <li class="inline"><a href="" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-100 dark:border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 hover:text-white"><i data-feather="twitter" class="size-4"></i></a></li>
-                                <li class="inline"><a href="" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center border border-gray-100 dark:border-gray-800 rounded-md hover:border-indigo-600 dark:hover:border-indigo-600 hover:bg-indigo-600 hover:text-white"><i data-feather="linkedin" class="size-4"></i></a></li>
-                            </ul>
+        <div class="grid md:grid-cols-12 grid-cols-1 mt-8 gap-[30px] items-center">
+            <div class="md:col-span-4">
+                <img src="{{ $director->image_url }}" class="w-full aspect-square object-cover rounded-md shadow-lg" alt="{{ $director->name }}">
+            </div>
+            <div class="md:col-span-8">
+                <div class="p-6">
+                    <h4 class="text-2xl font-semibold text-slate-900 mb-2">{{ $director->name }}</h4>
+                    <p class="text-blue-600 font-medium mb-4">{{ $director->title }}</p>
+                    @if($director->bio)
+                    <p class="text-slate-600 mb-6 leading-relaxed">{{ $director->bio }}</p>
+                    @endif
+                    
+                    <div class="grid md:grid-cols-2 gap-4 mb-6">
+                        @if($director->research_interests)
+                        <div>
+                            <h5 class="font-semibold text-slate-900 mb-2">Research Interests</h5>
+                            <div class="text-slate-600 text-sm space-y-1">
+                                {!! nl2br(e($director->research_interests)) !!}
+                            </div>
                         </div>
+                        @endif
+                        @if($director->achievements)
+                        <div>
+                            <h5 class="font-semibold text-slate-900 mb-2">Achievements</h5>
+                            <div class="text-slate-600 text-sm space-y-1">
+                                {!! nl2br(e($director->achievements)) !!}
+                            </div>
+                        </div>
+                        @endif
+                    </div>
+                    
+                    <div class="flex space-x-3">
+                        @if($director->social_email)
+                        <a href="mailto:{{ $director->social_email }}" class="size-10 inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors">
+                            <i data-feather="mail" class="size-4"></i>
+                        </a>
+                        @endif
+                        @if($director->social_linkedin)
+                        <a href="{{ $director->social_linkedin }}" target="_blank" class="size-10 inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors">
+                            <i data-feather="linkedin" class="size-4"></i>
+                        </a>
+                        @endif
+                        @if($director->social_google_scholar)
+                        <a href="{{ $director->social_google_scholar }}" target="_blank" class="size-10 inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors">
+                            <i data-feather="book-open" class="size-4"></i>
+                        </a>
+                        @endif
+                        @if($director->social_website)
+                        <a href="{{ $director->social_website }}" target="_blank" class="size-10 inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors">
+                            <i data-feather="globe" class="size-4"></i>
+                        </a>
+                        @endif
                     </div>
                 </div>
-            @endforeach
+            </div>
+        </div>
+    </div><!--end container-->
+    @endif
 
+    <!-- Auckland Lab Members Section -->
+    <div class="container relative md:mt-24 mt-16">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Auckland Lab Members</h3>
+            <p class="text-slate-400 max-w-xl mx-auto">Our Auckland team specializes in immersive AR/VR research and collaborative interface development.</p>
+        </div><!--end grid-->
+
+        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 mt-8 gap-[30px]">
+            @forelse($aucklandMembers as $member)
+                <div class="h-full">
+                    <a href="{{ url('/team/' . $member->slug) }}" class="block h-full group">
+                        <div class="team p-6 rounded-md border border-gray-100 h-full flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-2" style="background-color: #f6f6f6;">
+                            <img src="{{ $member->image_url }}" class="w-full aspect-square object-cover rounded-md shadow-md transition-all duration-300 group-hover:shadow-xl" alt="{{ $member->name }}">
+                            <div class="content mt-4 flex-1 flex flex-col">
+                                <h4 class="text-lg font-medium text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">{{ $member->name }}</h4>
+                                <p class="text-slate-600 text-sm group-hover:text-slate-700 transition-colors">{{ $member->title }}</p>
+                                <div class="flex space-x-2 mt-4">
+                                    @if($member->social_email)
+                                    <a href="mailto:{{ $member->social_email }}" class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition-colors">
+                                        <i data-feather="mail" class="size-3"></i>
+                                    </a>
+                                    @endif
+                                    @if($member->social_linkedin)
+                                    <a href="{{ $member->social_linkedin }}" target="_blank" class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition-colors">
+                                        <i data-feather="linkedin" class="size-3"></i>
+                                    </a>
+                                    @endif
+                                    @if($member->social_google_scholar)
+                                    <a href="{{ $member->social_google_scholar }}" target="_blank" class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition-colors">
+                                        <i data-feather="book-open" class="size-3"></i>
+                                    </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @empty
+                <div class="col-span-full text-center py-12">
+                    <p class="text-slate-500 text-lg">No Auckland lab members found.</p>
+                </div>
+            @endforelse
+        </div>
+    </div><!--end container-->
+
+    <!-- Adelaide Lab Members Section -->
+    <div class="container relative md:mt-24 mt-16">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Adelaide Lab Members</h3>
+            <p class="text-slate-400 max-w-xl mx-auto">Our Adelaide team focuses on AI emotion recognition and machine learning applications for empathic systems.</p>
+        </div><!--end grid-->
+
+        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 mt-8 gap-[30px]">
+            @forelse($adelaideMembers as $member)
+                <div class="h-full">
+                    <a href="{{ url('/team/' . $member->slug) }}" class="block h-full group">
+                        <div class="team p-6 rounded-md border border-gray-100 h-full flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-2" style="background-color: #f6f6f6;">
+                            <img src="{{ $member->image_url }}" class="w-full aspect-square object-cover rounded-md shadow-md transition-all duration-300 group-hover:shadow-xl" alt="{{ $member->name }}">
+                            <div class="content mt-4 flex-1 flex flex-col">
+                                <h4 class="text-lg font-medium text-slate-900 mb-1 group-hover:text-emerald-600 transition-colors">{{ $member->name }}</h4>
+                                <p class="text-slate-600 text-sm group-hover:text-slate-700 transition-colors">{{ $member->title }}</p>
+                                <div class="flex space-x-2 mt-4">
+                                    @if($member->social_email)
+                                    <a href="mailto:{{ $member->social_email }}" class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md hover:bg-emerald-200 transition-colors">
+                                        <i data-feather="mail" class="size-3"></i>
+                                    </a>
+                                    @endif
+                                    @if($member->social_linkedin)
+                                    <a href="{{ $member->social_linkedin }}" target="_blank" class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md hover:bg-emerald-200 transition-colors">
+                                        <i data-feather="linkedin" class="size-3"></i>
+                                    </a>
+                                    @endif
+                                    @if($member->social_google_scholar)
+                                    <a href="{{ $member->social_google_scholar }}" target="_blank" class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md hover:bg-emerald-200 transition-colors">
+                                        <i data-feather="book-open" class="size-3"></i>
+                                    </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            @empty
+                <div class="col-span-full text-center py-12">
+                    <p class="text-slate-500 text-lg">No Adelaide lab members found.</p>
+                </div>
+            @endforelse
         </div>
     </div><!--end container-->
 
