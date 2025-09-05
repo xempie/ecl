@@ -137,26 +137,10 @@ class HomeController extends Controller
     {
         $query = Project::with(['categories', 'members'])->active();
 
-        // Apply filters
-        if ($request->filled('year')) {
-            $query->where('year', $request->year);
-        }
-
+        // Apply topic filter (from research topic buttons)
         if ($request->filled('topic')) {
             $query->whereHas('categories', function ($q) use ($request) {
                 $q->where('slug', $request->topic);
-            });
-        }
-
-        if ($request->filled('status')) {
-            $query->where('status', $request->status);
-        }
-
-        if ($request->filled('search')) {
-            $searchTerm = $request->search;
-            $query->where(function ($q) use ($searchTerm) {
-                $q->where('title', 'LIKE', '%' . $searchTerm . '%')
-                  ->orWhere('description', 'LIKE', '%' . $searchTerm . '%');
             });
         }
 
