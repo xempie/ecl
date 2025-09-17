@@ -9,7 +9,7 @@
         <title>Techwind - Laravel 12 Multipurpose Landing & Admin Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta content="Tailwind CSS Multipurpose Landing & Admin Dashboard Template" name="description" />
-        <meta name="author" content="Shreethemes" />
+        <meta name="author" content="Empathic Computing Lab" />
         <meta name="website" content="https://shreethemes.in" />
         <meta name="email" content="support@shreethemes.in" />
         <meta name="version" content="1.0.0" />

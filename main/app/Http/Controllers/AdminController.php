@@ -12,7 +12,9 @@ use App\Models\Contact;
 use App\Models\NewsEvent;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver as ImagickDriver;
+use Intervention\Image\Drivers\Gd\Driver as GdDriver;
 
 class AdminController extends Controller
 {
@@ -220,8 +222,8 @@ class AdminController extends Controller
             'categories.*' => 'exists:categories,id',
         ]);
 
-        $data = $request->all();
-        
+        $data = $request->except(['categories', 'members']); // Exclude relationship data
+
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $imageName = time() . '.jpg'; // Always save as JPG for consistency
@@ -232,22 +234,9 @@ class AdminController extends Controller
                 mkdir(dirname($imagePath), 0755, true);
             }
             
-            // Create image instance and crop to square, then resize to 200x200
-            $image = Image::make($imageFile);
-            
-            // Get dimensions to crop to square
-            $width = $image->width();
-            $height = $image->height();
-            $size = min($width, $height);
-            
-            // Crop to square from center
-            $image->crop($size, $size, ($width - $size) / 2, ($height - $size) / 2);
-            
-            // Resize to 200x200
-            $image->resize(200, 200);
-            
-            // Save as JPG with good quality
-            $image->save($imagePath, 90);
+            // Simple file copy without image processing for now
+            // This avoids the GD extension issue
+            copy($imageFile, $imagePath);
             
             $data['image'] = 'assets/images/publications/' . $imageName;
         }
@@ -285,8 +274,9 @@ class AdminController extends Controller
     {
         $members = Member::active()->ordered()->get();
         $categories = Category::active()->ordered()->get();
+        $projects = Project::active()->ordered()->get(); // Add missing projects variable
         $publication->load(['members', 'categories']);
-        return view('admin.publications.edit', compact('publication', 'members', 'categories'));
+        return view('admin.publications.edit', compact('publication', 'members', 'categories', 'projects'));
     }
 
     public function updatePublication(Request $request, Publication $publication)
@@ -311,8 +301,8 @@ class AdminController extends Controller
             'categories.*' => 'exists:categories,id',
         ]);
 
-        $data = $request->all();
-        
+        $data = $request->except(['categories', 'members']); // Exclude relationship data
+
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($publication->image && file_exists(public_path($publication->image))) {
@@ -328,22 +318,9 @@ class AdminController extends Controller
                 mkdir(dirname($imagePath), 0755, true);
             }
             
-            // Create image instance and crop to square, then resize to 200x200
-            $image = Image::make($imageFile);
-            
-            // Get dimensions to crop to square
-            $width = $image->width();
-            $height = $image->height();
-            $size = min($width, $height);
-            
-            // Crop to square from center
-            $image->crop($size, $size, ($width - $size) / 2, ($height - $size) / 2);
-            
-            // Resize to 200x200
-            $image->resize(200, 200);
-            
-            // Save as JPG with good quality
-            $image->save($imagePath, 90);
+            // Simple file copy without image processing for now
+            // This avoids the GD extension issue
+            copy($imageFile, $imagePath);
             
             $data['image'] = 'assets/images/publications/' . $imageName;
         }
@@ -421,8 +398,8 @@ class AdminController extends Controller
             'members.*' => 'exists:members,id',
         ]);
 
-        $data = $request->all();
-        
+        $data = $request->except(['categories', 'members']); // Exclude relationship data
+
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
             $imageName = time() . '.jpg';
@@ -433,22 +410,9 @@ class AdminController extends Controller
                 mkdir(dirname($imagePath), 0755, true);
             }
             
-            // Create image instance and crop to square, then resize to 200x200
-            $image = Image::make($imageFile);
-            
-            // Get dimensions to crop to square
-            $width = $image->width();
-            $height = $image->height();
-            $size = min($width, $height);
-            
-            // Crop to square from center
-            $image->crop($size, $size, ($width - $size) / 2, ($height - $size) / 2);
-            
-            // Resize to 200x200
-            $image->resize(200, 200);
-            
-            // Save as JPG with good quality
-            $image->save($imagePath, 90);
+            // Simple file copy without image processing for now
+            // This avoids the GD extension issue
+            copy($imageFile, $imagePath);
             
             $data['image'] = 'assets/images/projects/' . $imageName;
         }
@@ -507,8 +471,8 @@ class AdminController extends Controller
             'members.*' => 'exists:members,id',
         ]);
 
-        $data = $request->all();
-        
+        $data = $request->except(['categories', 'members']); // Exclude relationship data
+
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($project->image && file_exists(public_path($project->image))) {
@@ -524,22 +488,9 @@ class AdminController extends Controller
                 mkdir(dirname($imagePath), 0755, true);
             }
             
-            // Create image instance and crop to square, then resize to 200x200
-            $image = Image::make($imageFile);
-            
-            // Get dimensions to crop to square
-            $width = $image->width();
-            $height = $image->height();
-            $size = min($width, $height);
-            
-            // Crop to square from center
-            $image->crop($size, $size, ($width - $size) / 2, ($height - $size) / 2);
-            
-            // Resize to 200x200
-            $image->resize(200, 200);
-            
-            // Save as JPG with good quality
-            $image->save($imagePath, 90);
+            // Simple file copy without image processing for now
+            // This avoids the GD extension issue
+            copy($imageFile, $imagePath);
             
             $data['image'] = 'assets/images/projects/' . $imageName;
         }
@@ -707,7 +658,7 @@ class AdminController extends Controller
             'categories.*' => 'exists:categories,id',
         ]);
 
-        $data = $request->all();
+        $data = $request->except(['categories']); // Exclude relationship data
         $data['type'] = 'news';
         $data['author_id'] = auth()->id();
 
@@ -853,7 +804,7 @@ class AdminController extends Controller
             'categories.*' => 'exists:categories,id',
         ]);
 
-        $data = $request->all();
+        $data = $request->except(['categories']); // Exclude relationship data
         $data['type'] = 'event';
         $data['author_id'] = auth()->id();
 

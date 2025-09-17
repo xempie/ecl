@@ -26,17 +26,9 @@ Route::get('/research/areas', function () {
 })->name('research.areas');
 
 // Team subpages
-Route::get('/team/faculty', function () {
-    return view('team.faculty');
-})->name('team.faculty');
-
-Route::get('/team/students', function () {
-    return view('team.students');
-})->name('team.students');
-
-Route::get('/team/collaborators', function () {
-    return view('team.collaborators');
-})->name('team.collaborators');
+Route::get('/team/alumni', [HomeController::class, 'alumni'])->name('team.alumni');
+Route::get('/team/collaborators', [HomeController::class, 'collaborators'])->name('team.collaborators');
+Route::get('/team/virtual-interns', [HomeController::class, 'virtualInterns'])->name('team.virtual-interns');
 
 // Team member detail pages
 Route::get('/team/{member}', [HomeController::class, 'teamMember'])->name('team.member');

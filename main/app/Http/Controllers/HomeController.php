@@ -155,6 +155,37 @@ class HomeController extends Controller
     }
 
     /**
+     * Display the alumni page
+     */
+    public function alumni()
+    {
+        $aucklandAlumni = Member::where('lab_location', 'auckland')->where('member_type', 'alumni')->active()->ordered()->get();
+        $adelaideAlumni = Member::where('lab_location', 'adelaide')->where('member_type', 'alumni')->active()->ordered()->get();
+        
+        return view('team.alumni', compact('aucklandAlumni', 'adelaideAlumni'));
+    }
+
+    /**
+     * Display the collaborators page
+     */
+    public function collaborators()
+    {
+        $collaborators = Member::where('member_type', 'collaborator')->active()->ordered()->get();
+        
+        return view('team.collaborators', compact('collaborators'));
+    }
+
+    /**
+     * Display the virtual interns page
+     */
+    public function virtualInterns()
+    {
+        $virtualInterns = Member::where('member_type', 'virtual_intern')->active()->ordered()->get();
+        
+        return view('team.virtual-interns', compact('virtualInterns'));
+    }
+
+    /**
      * Display team member detail page
      */
     public function teamMember($slug)

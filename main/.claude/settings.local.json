@@ -110,7 +110,8 @@
       "Read(/C:\\xampp\\htdocs\\newecl\\main\\resources\\views\\admin\\layouts/**)",
       "Read(/C:\\xampp\\htdocs\\newecl\\main\\resources\\views\\auth/**)",
       "Bash(sc query:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Read(//c/xampp/php/**)"
     ],
     "deny": [],
     "ask": []
