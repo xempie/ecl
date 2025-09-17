@@ -162,6 +162,32 @@ This is **Empathic Computing Research Lab** - a Laravel 12 academic website for 
 - Styles in `public/assets/css/`
 - Academic Images in `public/assets/images/`
 
+## Deployment Configuration
+
+### **🚀 Live Deployment Setup**
+- **Live URL**: https://empathiccomputing.com/new/
+- **Database**: MySQL (empathi1_db) - configured for production
+- **SSH Access**: Passwordless deployment via `ssh_keys/deployment_key`
+- **Deployment Script**: `deploy-passwordless.sh` for automated deployment
+
+### **🔄 Development Workflow**
+1. **Local Development**: Work on local MySQL database (ecldb)
+2. **Testing**: Use local XAMPP environment for development
+3. **Deployment**: Run deployment script when ready to deploy
+4. **Database Sync**: Local data migrated to live MySQL during deployment
+
+### **📋 Deployment Commands**
+```bash
+# Deploy to live server
+./deploy-passwordless.sh
+
+# SSH to server (passwordless)
+ssh -i ssh_keys/deployment_key -p 2683 empathi1@s04ee.syd5.hostingplatform.net.au
+
+# Check live database
+ssh -i ssh_keys/deployment_key -p 2683 empathi1@s04ee.syd5.hostingplatform.net.au "cd public_html/new && php artisan tinker"
+```
+
 ## Error Checking Protocol
 
 **MANDATORY AFTER EVERY CHANGE:**

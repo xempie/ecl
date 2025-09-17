@@ -21,3 +21,12 @@ yarn-error.log
 /.nova
 /.zed
 .DS_Store
+# Deployment sensitive files
+.env.production
+ssh_keys/
+DEPLOYMENT_GUIDE.md
+deploy-passwordless.sh
+*.sql
+complete_import.php
+proper_import.php
+laravel_import.php
