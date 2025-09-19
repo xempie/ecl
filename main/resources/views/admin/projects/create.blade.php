@@ -28,7 +28,7 @@
                 <!-- Main Information -->
                 <div class="lg:col-span-2 space-y-6">
                     <!-- Basic Project Info -->
-                    <div class="relative overflow-hidden rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6">
+                    <div class="relative rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6" style="overflow: visible;">
                         <h6 class="text-lg font-semibold mb-6">Project Details</h6>
 
                         <div class="grid grid-cols-1 gap-6">
@@ -53,14 +53,84 @@
                                 @enderror
                             </div>
 
-                            <!-- Year -->
-                            <div>
-                                <label for="year" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Year</label>
-                                <input type="number" id="year" name="year" value="{{ old('year', date('Y')) }}" min="1900" max="{{ date('Y') + 5 }}"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                @error('year')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
+                            <!-- Project Duration -->
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <!-- Start Date -->
+                                <div>
+                                    <label for="start_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Start Date</label>
+                                    <div class="relative">
+                                        <input type="text" id="start_date_display" readonly
+                                            class="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white cursor-pointer"
+                                            placeholder="Select start date">
+                                        <input type="hidden" id="start_date" name="start_date" value="{{ old('start_date', date('Y-m')) }}">
+                                        <div class="absolute pointer-events-none z-20" style="top: 10px; right: 10px;">
+                                            <i class="uil uil-calendar-alt text-gray-400"></i>
+                                        </div>
+                                        <!-- Custom Calendar Dropdown -->
+                                        <div id="start_date_calendar" class="hidden absolute mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-xl p-4 w-64 z-50">
+                                            <div class="flex justify-between items-center mb-3">
+                                                <button type="button" id="start_prev_year" class="p-1 hover:bg-gray-100 dark:hover:bg-gray-600 rounded">
+                                                    <i class="uil uil-angle-left-b"></i>
+                                                </button>
+                                                <select id="start_year_select" class="mx-2 px-2 py-1 border rounded dark:bg-gray-600 dark:border-gray-500">
+                                                    <!-- Years will be populated by JavaScript -->
+                                                </select>
+                                                <button type="button" id="start_next_year" class="p-1 hover:bg-gray-100 dark:hover:bg-gray-600 rounded">
+                                                    <i class="uil uil-angle-right-b"></i>
+                                                </button>
+                                            </div>
+                                            <div class="grid grid-cols-3 gap-2">
+                                                <!-- Months will be populated by JavaScript -->
+                                            </div>
+                                            <div class="mt-3 flex justify-between">
+                                                <button type="button" id="start_clear_date" class="px-3 py-1 text-sm text-gray-500 hover:text-gray-700">Clear</button>
+                                                <button type="button" id="start_close_calendar" class="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700">Done</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @error('start_date')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <!-- End Date -->
+                                <div>
+                                    <label for="end_date" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">End Date</label>
+                                    <div class="relative">
+                                        <input type="text" id="end_date_display" readonly
+                                            class="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white cursor-pointer"
+                                            placeholder="Select end date">
+                                        <input type="hidden" id="end_date" name="end_date" value="{{ old('end_date') }}">
+                                        <div class="absolute pointer-events-none z-20" style="top: 10px; right: 10px;">
+                                            <i class="uil uil-calendar-alt text-gray-400"></i>
+                                        </div>
+                                        <!-- Custom Calendar Dropdown -->
+                                        <div id="end_date_calendar" class="hidden absolute mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-xl p-4 w-64 z-50">
+                                            <div class="flex justify-between items-center mb-3">
+                                                <button type="button" id="end_prev_year" class="p-1 hover:bg-gray-100 dark:hover:bg-gray-600 rounded">
+                                                    <i class="uil uil-angle-left-b"></i>
+                                                </button>
+                                                <select id="end_year_select" class="mx-2 px-2 py-1 border rounded dark:bg-gray-600 dark:border-gray-500">
+                                                    <!-- Years will be populated by JavaScript -->
+                                                </select>
+                                                <button type="button" id="end_next_year" class="p-1 hover:bg-gray-100 dark:hover:bg-gray-600 rounded">
+                                                    <i class="uil uil-angle-right-b"></i>
+                                                </button>
+                                            </div>
+                                            <div class="grid grid-cols-3 gap-2" id="end_months_grid">
+                                                <!-- Months will be populated by JavaScript -->
+                                            </div>
+                                            <div class="mt-3 flex justify-between">
+                                                <button type="button" id="end_clear_date" class="px-3 py-1 text-sm text-gray-500 hover:text-gray-700">Clear</button>
+                                                <button type="button" id="end_close_calendar" class="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700">Done</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @error('end_date')
+                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
+                                    <p class="text-sm text-gray-500 mt-1">Leave empty for ongoing projects</p>
+                                </div>
                             </div>
 
                             <!-- Research Topics -->
@@ -99,33 +169,46 @@
                     <div class="relative overflow-hidden rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6">
                         <h6 class="text-lg font-semibold mb-4">Project Image</h6>
                         <div class="space-y-4">
-                            <input type="file" id="image" name="image" accept="image/*"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <div class="relative">
+                                <input type="file" id="image" name="image" accept="image/*" class="sr-only">
+                                <label for="image" class="cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600">
+                                    <i class="uil uil-upload mr-2"></i>
+                                    Choose Image File
+                                </label>
+                                <span id="file-name-project" class="ml-3 text-sm text-gray-500">No file selected</span>
+                            </div>
                             @error('image')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                             <p class="text-sm text-gray-500">Upload an image for the project. Will be cropped to square and resized to 200x200px. Max size: 2MB</p>
+
+                            <script>
+                                document.getElementById('image').addEventListener('change', function(e) {
+                                    const fileName = e.target.files[0] ? e.target.files[0].name : 'No file selected';
+                                    document.getElementById('file-name-project').textContent = fileName;
+                                });
+                            </script>
                         </div>
                     </div>
 
                     <!-- Lab Members Contributions -->
-                    <div class="relative overflow-hidden rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6">
+                    <div class="relative rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6" style="overflow: visible;">
                         <h6 class="text-lg font-semibold mb-6">Lab Members Contributions</h6>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Select up to 10 lab members working on this project.</p>
-                        
+
                         <!-- Member Search Container -->
-                        <div class="relative mb-4">
+                        <div class="relative mb-4" style="z-index: 1000;">
                             <!-- Member Search Input -->
                             <div class="relative">
-                                <input type="text" id="member-search" placeholder="Search lab members..." 
+                                <input type="text" id="member-search" placeholder="Search lab members..."
                                     class="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                     <i class="uil uil-search text-gray-400"></i>
                                 </div>
                             </div>
-                            
+
                             <!-- Search Results Dropdown -->
-                            <div id="search-results" class="hidden absolute z-50 w-full mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto">
+                            <div id="search-results" class="hidden absolute w-full mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto" style="z-index: 9999;">
                                 <!-- Search results will appear here -->
                             </div>
                         </div>
@@ -380,6 +463,136 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log('Member removed. Total:', selectedMemberIds.length);
     }
+
+    // Year-Month Calendar Widget
+    function initYearMonthCalendar(prefix) {
+        const displayInput = document.getElementById(`${prefix}_date_display`);
+        const hiddenInput = document.getElementById(`${prefix}_date`);
+        const calendar = document.getElementById(`${prefix}_date_calendar`);
+        const yearSelect = document.getElementById(`${prefix}_year_select`);
+        const prevYearBtn = document.getElementById(`${prefix}_prev_year`);
+        const nextYearBtn = document.getElementById(`${prefix}_next_year`);
+        const monthsGrid = calendar.querySelector('.grid-cols-3');
+        const clearBtn = document.getElementById(`${prefix}_clear_date`);
+        const closeBtn = document.getElementById(`${prefix}_close_calendar`);
+
+        const months = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ];
+
+        let currentYear = new Date().getFullYear();
+        let selectedYear = currentYear;
+        let selectedMonth = null;
+
+        // Initialize year options
+        function populateYears() {
+            yearSelect.innerHTML = '';
+            for (let year = currentYear - 10; year <= currentYear + 10; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                if (year === selectedYear) option.selected = true;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        // Initialize months grid
+        function populateMonths() {
+            monthsGrid.innerHTML = '';
+            months.forEach((month, index) => {
+                const monthBtn = document.createElement('button');
+                monthBtn.type = 'button';
+                monthBtn.className = 'px-3 py-2 text-sm rounded hover:bg-blue-100 dark:hover:bg-blue-800';
+                monthBtn.textContent = month;
+                monthBtn.dataset.month = index + 1;
+
+                if (selectedMonth === index + 1) {
+                    monthBtn.classList.add('bg-blue-600', 'text-white');
+                }
+
+                monthBtn.addEventListener('click', function() {
+                    selectedMonth = parseInt(this.dataset.month);
+                    updateSelectedDate();
+                    populateMonths(); // Refresh to show selection
+                });
+
+                monthsGrid.appendChild(monthBtn);
+            });
+        }
+
+        // Update the selected date
+        function updateSelectedDate() {
+            if (selectedYear && selectedMonth) {
+                const formattedDate = `${selectedYear}-${selectedMonth.toString().padStart(2, '0')}`;
+                const displayDate = `${months[selectedMonth - 1]} ${selectedYear}`;
+
+                hiddenInput.value = formattedDate;
+                displayInput.value = displayDate;
+            }
+        }
+
+        // Initialize with existing value
+        function initializeFromValue() {
+            const existingValue = hiddenInput.value;
+            if (existingValue) {
+                const [year, month] = existingValue.split('-');
+                selectedYear = parseInt(year);
+                selectedMonth = parseInt(month);
+                currentYear = selectedYear;
+                updateSelectedDate();
+            }
+        }
+
+        // Event listeners
+        displayInput.addEventListener('click', function() {
+            calendar.classList.toggle('hidden');
+            populateYears();
+            populateMonths();
+        });
+
+        yearSelect.addEventListener('change', function() {
+            selectedYear = parseInt(this.value);
+        });
+
+        prevYearBtn.addEventListener('click', function() {
+            currentYear--;
+            selectedYear = currentYear;
+            populateYears();
+        });
+
+        nextYearBtn.addEventListener('click', function() {
+            currentYear++;
+            selectedYear = currentYear;
+            populateYears();
+        });
+
+        clearBtn.addEventListener('click', function() {
+            selectedYear = null;
+            selectedMonth = null;
+            hiddenInput.value = '';
+            displayInput.value = '';
+            calendar.classList.add('hidden');
+        });
+
+        closeBtn.addEventListener('click', function() {
+            calendar.classList.add('hidden');
+        });
+
+        // Close calendar when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!displayInput.contains(e.target) && !calendar.contains(e.target)) {
+                calendar.classList.add('hidden');
+            }
+        });
+
+        // Initialize
+        initializeFromValue();
+    }
+
+    // Initialize both calendars
+    initYearMonthCalendar('start');
+    initYearMonthCalendar('end');
 });
 </script>
 @endpush

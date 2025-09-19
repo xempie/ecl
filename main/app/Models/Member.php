@@ -115,10 +115,30 @@ class Member extends Model
     {
         return [
             'Lab Member' => 'Lab Member',
-            'Virtual Intern' => 'Virtual Intern', 
+            'Virtual Intern' => 'Virtual Intern',
             'Visiting Researcher' => 'Visiting Researcher',
             'Collaborator' => 'Collaborator',
             'PhD Student' => 'PhD Student',
+        ];
+    }
+
+    public static function getPositions()
+    {
+        return [
+            'Director' => 'Director',
+            'Associate Director' => 'Associate Director',
+            'Principal Investigator' => 'Principal Investigator',
+            'Senior Research Fellow' => 'Senior Research Fellow',
+            'Research Fellow' => 'Research Fellow',
+            'Postdoctoral Researcher' => 'Postdoctoral Researcher',
+            'PhD Student' => 'PhD Student',
+            'Master Student' => 'Master Student',
+            'Research Assistant' => 'Research Assistant',
+            'Visiting Researcher' => 'Visiting Researcher',
+            'Virtual Intern' => 'Virtual Intern',
+            'Collaborator' => 'Collaborator',
+            'Lab Manager' => 'Lab Manager',
+            'Technical Specialist' => 'Technical Specialist',
         ];
     }
 }

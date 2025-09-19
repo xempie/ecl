@@ -55,14 +55,14 @@
                 <div class="size-16 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <i class="uil uil-users-alt text-2xl"></i>
                 </div>
-                <h4 class="text-2xl font-bold text-slate-900 mb-1">{{ $projects->sum(function($project) { return $project->members->count(); }) }}</h4>
+                <h4 class="text-2xl font-bold text-slate-900 mb-1">{{ $projects->sum(function($project) { return $project->members ? $project->members->count() : 0; }) }}</h4>
                 <p class="text-slate-500 text-sm">Researchers Involved</p>
             </div>
             <div class="text-center">
                 <div class="size-16 bg-violet-100 text-violet-600 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <i class="uil uil-tag-alt text-2xl"></i>
                 </div>
-                <h4 class="text-2xl font-bold text-slate-900 mb-1">{{ $categories->count() }}</h4>
+                <h4 class="text-2xl font-bold text-slate-900 mb-1">{{ $categories ? $categories->count() : 0 }}</h4>
                 <p class="text-slate-500 text-sm">Research Topics</p>
             </div>
             <div class="text-center">
@@ -75,7 +75,7 @@
         </div>
 
         <!-- Research Topics -->
-        @if($categories->count() > 0)
+        @if($categories && $categories->count() > 0)
         <div class="relative mb-12">
             <div class="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 shadow-sm">
                 <div class="flex items-center mb-4">
@@ -101,6 +101,7 @@
         <!-- Projects Grid -->
         <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
             @forelse($projects as $project)
+                <a href="{{ route('research.project.detail', $project->slug) }}" class="group block">
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white">
                     <!-- Project Image -->
                     <div class="relative h-64 overflow-hidden">
@@ -139,7 +140,7 @@
                     <!-- Project Content -->
                     <div class="p-6">
                         <!-- Categories -->
-                        @if($project->categories->count() > 0)
+                        @if($project->categories && $project->categories->count() > 0)
                         <div class="flex flex-wrap gap-2 mb-3">
                             @foreach($project->categories->take(3) as $category)
                                 <span class="text-xs px-2 py-1 rounded-md font-medium" style="background-color: {{ $category->color }}20; color: {{ $category->color }};">
@@ -162,19 +163,19 @@
                         @endif
 
                         <!-- Project Members -->
-                        @if($project->members->count() > 0)
+                        @if($project->members && $project->members->count() > 0)
                         <div class="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
                             <div class="flex -space-x-2">
                                 @foreach($project->members->take(4) as $member)
                                     <img src="{{ $member->image_url }}" alt="{{ $member->name }}" class="size-8 rounded-full border-2 border-white shadow-sm" title="{{ $member->name }}">
                                 @endforeach
-                                @if($project->members->count() > 4)
+                                @if($project->members && $project->members->count() > 4)
                                     <div class="size-8 rounded-full bg-slate-100 border-2 border-white shadow-sm flex items-center justify-center">
                                         <span class="text-xs font-medium text-slate-600">+{{ $project->members->count() - 4 }}</span>
                                     </div>
                                 @endif
                             </div>
-                            <span class="text-xs text-slate-500">{{ $project->members->count() }} member{{ $project->members->count() !== 1 ? 's' : '' }}</span>
+                            <span class="text-xs text-slate-500">{{ $project->members ? $project->members->count() : 0 }} member{{ ($project->members ? $project->members->count() : 0) !== 1 ? 's' : '' }}</span>
                         </div>
                         @endif
 
@@ -197,6 +198,7 @@
                         @endif
                     </div>
                 </div>
+                </a>
             @empty
                 <div class="col-span-full text-center py-16">
                     <div class="size-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">

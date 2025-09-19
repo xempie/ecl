@@ -22,7 +22,7 @@
 
         <!-- Success/Error Messages -->
         @if(session('success'))
-        <div class="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+        <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-md" style="border:1px solid #ccc">
             {{ session('success') }}
         </div>
         @endif
@@ -54,7 +54,7 @@
                         </thead>
                         <tbody>
                             @forelse($categories as $category)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onclick="window.location='{{ route('admin.categories.edit', $category) }}'">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="w-4 h-4 rounded-full mr-3 flex-shrink-0" style="background-color: {{ $category->color }}"></div>

@@ -58,6 +58,11 @@ class Project extends Model
                     ->withTimestamps();
     }
 
+    public function publications()
+    {
+        return $this->hasMany(Publication::class);
+    }
+
     // Scopes
     public function scopeActive($query)
     {

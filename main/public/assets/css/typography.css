@@ -4,6 +4,17 @@
     font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* Light blue text selection for entire website */
+::selection {
+    background-color: #dbeafe; /* Light blue background */
+    color: #1e40af; /* Darker blue text */
+}
+
+::-moz-selection {
+    background-color: #dbeafe; /* Light blue background */
+    color: #1e40af; /* Darker blue text */
+}
+
 /* Ensure all text elements use Nunito */
 body,
 h1, h2, h3, h4, h5, h6,

@@ -44,8 +44,13 @@
                             <!-- Title -->
                             <div>
                                 <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Title/Position *</label>
-                                <input type="text" id="title" name="title" value="{{ old('title') }}" required
+                                <select id="title" name="title" required
                                     class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                    <option value="">Select Position</option>
+                                    @foreach(\App\Models\Member::getPositions() as $key => $value)
+                                        <option value="{{ $key }}" {{ old('title') === $key ? 'selected' : '' }}>{{ $value }}</option>
+                                    @endforeach
+                                </select>
                                 @error('title')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
@@ -177,12 +182,25 @@
                     <div class="relative overflow-hidden rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6 mb-6">
                         <h6 class="text-lg font-semibold mb-4">Profile Image</h6>
                         <div class="space-y-4">
-                            <input type="file" id="image" name="image" accept="image/*"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <div class="relative">
+                                <input type="file" id="image" name="image" accept="image/*" class="sr-only">
+                                <label for="image" class="cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600">
+                                    <i class="uil uil-upload mr-2"></i>
+                                    Choose Image File
+                                </label>
+                                <span id="file-name" class="ml-3 text-sm text-gray-500">No file selected</span>
+                            </div>
                             @error('image')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                             <p class="text-sm text-gray-500">Upload a square image for best results. Max size: 2MB</p>
+
+                            <script>
+                                document.getElementById('image').addEventListener('change', function(e) {
+                                    const fileName = e.target.files[0] ? e.target.files[0].name : 'No file selected';
+                                    document.getElementById('file-name').textContent = fileName;
+                                });
+                            </script>
                         </div>
                     </div>
 
@@ -205,34 +223,7 @@
                             @enderror
                         </div>
 
-                        <!-- Member Category -->
-                        <div class="mb-4">
-                            <label for="member_category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category *</label>
-                            <select id="member_category" name="member_category" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                <option value="">Select Category</option>
-                                @foreach(\App\Models\Member::getMemberCategories() as $key => $value)
-                                    <option value="{{ $key }}" {{ old('member_category') === $key ? 'selected' : '' }}>{{ $value }}</option>
-                                @endforeach
-                            </select>
-                            @error('member_category')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
 
-                        <!-- Status -->
-                        <div class="mb-4">
-                            <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Status *</label>
-                            <select id="status" name="status" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                <option value="active" {{ old('status') === 'active' ? 'selected' : '' }}>Active</option>
-                                <option value="inactive" {{ old('status') === 'inactive' ? 'selected' : '' }}>Inactive</option>
-                                <option value="alumni" {{ old('status') === 'alumni' ? 'selected' : '' }}>Alumni</option>
-                            </select>
-                            @error('status')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
 
                         <!-- Position Order -->
                         <div class="mb-4">

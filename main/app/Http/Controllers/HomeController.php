@@ -18,7 +18,6 @@ class HomeController extends Controller
     {
         $featuredPublications = Publication::with(['categories', 'members'])
             ->featured()
-            ->published()
             ->orderBy('year', 'desc')
             ->orderBy('created_at', 'desc')
             ->limit(6)
@@ -91,7 +90,7 @@ class HomeController extends Controller
      */
     public function publications(Request $request)
     {
-        $query = Publication::with(['categories', 'members'])->active();
+        $query = Publication::with(['categories', 'members']);
 
         // Apply filters
         if ($request->filled('year')) {
@@ -135,7 +134,7 @@ class HomeController extends Controller
      */
     public function projects(Request $request)
     {
-        $query = Project::with(['categories', 'members'])->active();
+        $query = Project::with(['categories', 'members']); // Removed ->active() to show all projects
 
         // Apply topic filter (from research topic buttons)
         if ($request->filled('topic')) {
@@ -152,6 +151,33 @@ class HomeController extends Controller
         $categories = Category::active()->ordered()->get();
 
         return view('research.projects', compact('projects', 'categories'));
+    }
+
+    /**
+     * Display individual project detail page
+     */
+    public function projectDetail($slug)
+    {
+        $project = Project::where('slug', $slug)->with(['categories', 'members', 'publications'])->first();
+
+        if (!$project) {
+            abort(404);
+        }
+
+        // Get related projects from same categories
+        $relatedProjects = collect();
+        if ($project->categories && $project->categories->count() > 0) {
+            $relatedProjects = Project::where('id', '!=', $project->id)
+                ->whereHas('categories', function ($query) use ($project) {
+                    $query->whereIn('categories.id', $project->categories->pluck('id'));
+                })
+                ->with(['categories', 'members'])
+                ->ordered()
+                ->limit(3)
+                ->get();
+        }
+
+        return view('research.project-detail', compact('project', 'relatedProjects'));
     }
 
     /**
@@ -188,18 +214,28 @@ class HomeController extends Controller
     /**
      * Display team member detail page
      */
-    public function teamMember($slug)
+    public function teamMember(Request $request, $slug)
     {
         $member = Member::where('slug', $slug)->active()->first();
-        
+
         if (!$member) {
             abort(404);
         }
 
-        // Get related publications and projects
-        $publications = $member->publications()->with('categories')->orderBy('year', 'desc')->limit(10)->get();
-        $projects = $member->projects()->active()->ordered()->limit(5)->get();
-        
+        // Get related publications with pagination (5 per page)
+        $publications = $member->publications()
+            ->with('categories')
+            ->orderBy('year', 'desc')
+            ->paginate(5, ['*'], 'publications')
+            ->appends($request->query());
+
+        // Get related projects with pagination (5 per page)
+        $projects = $member->projects()
+            ->with(['categories'])
+            ->ordered()
+            ->paginate(5, ['*'], 'projects')
+            ->appends($request->query());
+
         return view('team.member-detail', compact('member', 'publications', 'projects'));
     }
 

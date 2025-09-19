@@ -35,15 +35,26 @@
             .font-rubik {
                 font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             }
-            
+
             /* Apply Rubik to all elements */
             * {
                 font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             }
-            
+
             /* Custom body background color */
             body {
                 background-color: rgb(246, 247, 250) !important;
+            }
+
+            /* Light blue text selection */
+            ::selection {
+                background-color: #dbeafe; /* Light blue background */
+                color: #1e40af; /* Darker blue text */
+            }
+
+            ::-moz-selection {
+                background-color: #dbeafe; /* Light blue background */
+                color: #1e40af; /* Darker blue text */
             }
             
             /* Active submenu item styling */

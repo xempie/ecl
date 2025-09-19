@@ -1,0 +1,2 @@
+id	title	slug	description	status	start_date	end_date	funding_source	budget	project_type	year	categories	url	repository_url	image	is_featured	position_order	created_at	updated_at
+1	Test project	test-project	rtest	completed	NULL	NULL	NULL	NULL	research	2025	NULL	NULL	NULL	NULL	1	0	2025-09-15 04:51:06	2025-09-15 07:12:35

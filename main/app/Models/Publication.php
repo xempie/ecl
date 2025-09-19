@@ -21,11 +21,11 @@ class Publication extends Model
         'download_url',
         'abstract',
         'type',
-        'status',
         'image',
         'is_featured',
         'citation_count',
-        'publication_date'
+        'publication_date',
+        'project_id'
     ];
 
     protected $casts = [
@@ -67,16 +67,12 @@ class Publication extends Model
                     ->withTimestamps();
     }
 
-    // Scopes
-    public function scopeActive($query)
+    public function project()
     {
-        return $query->whereIn('status', ['published', 'in_press']);
+        return $this->belongsTo(Project::class);
     }
 
-    public function scopePublished($query)
-    {
-        return $query->where('status', 'published');
-    }
+    // Scopes
 
     public function scopeByType($query, $type)
     {
@@ -125,17 +121,6 @@ class Publication extends Model
         return $types[$this->type] ?? 'Publication';
     }
 
-    public function getStatusDisplayAttribute()
-    {
-        $statuses = [
-            'published' => 'Published',
-            'in_press' => 'In Press',
-            'submitted' => 'Submitted',
-            'under_review' => 'Under Review'
-        ];
-        
-        return $statuses[$this->status] ?? 'Unknown';
-    }
 
     public static function getPublicationTypes()
     {
@@ -148,13 +133,4 @@ class Publication extends Model
         ];
     }
 
-    public static function getPublicationStatuses()
-    {
-        return [
-            'published' => 'Published',
-            'in_press' => 'In Press',
-            'submitted' => 'Submitted',
-            'under_review' => 'Under Review'
-        ];
-    }
 }

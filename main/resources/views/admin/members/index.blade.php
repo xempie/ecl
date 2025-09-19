@@ -22,7 +22,7 @@
 
         <!-- Success Message -->
         @if(session('success'))
-        <div class="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+        <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-md" style="border:1px solid #ccc">
             {{ session('success') }}
         </div>
         @endif
@@ -49,10 +49,10 @@
                         </thead>
                         <tbody>
                             @forelse($members as $member)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onclick="window.location='{{ route('admin.members.edit', $member) }}'">
                                 <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="w-10 h-10 rounded-full overflow-hidden mr-3">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 rounded-full overflow-hidden">
                                             <img src="{{ $member->image_url }}" alt="{{ $member->name }}" class="w-full h-full object-cover">
                                         </div>
                                         <div>
@@ -99,17 +99,17 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex space-x-2">
-                                        <a href="{{ route('admin.members.show', $member) }}" class="text-blue-600 hover:text-blue-800" title="View">
+                                        <a href="{{ route('admin.members.show', $member) }}" class="text-blue-600 hover:text-blue-800 text-xl" title="View">
                                             <i class="uil uil-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.members.edit', $member) }}" class="text-indigo-600 hover:text-indigo-800" title="Edit">
+                                        <a href="{{ route('admin.members.edit', $member) }}" class="text-indigo-600 hover:text-indigo-800 text-xl" title="Edit">
                                             <i class="uil uil-edit"></i>
                                         </a>
-                                        <form method="POST" action="{{ route('admin.members.destroy', $member) }}" class="inline" 
+                                        <form method="POST" action="{{ route('admin.members.destroy', $member) }}" class="inline"
                                               onsubmit="return confirm('Are you sure you want to delete this member?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-800" title="Delete">
+                                            <button type="submit" class="text-red-600 hover:text-red-800 text-xl" title="Delete">
                                                 <i class="uil uil-trash"></i>
                                             </button>
                                         </form>

@@ -18,6 +18,7 @@ Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact-us'
 
 // Research subpages
 Route::get('/research/projects', [HomeController::class, 'projects'])->name('research.projects');
+Route::get('/research/projects/{project}', [HomeController::class, 'projectDetail'])->name('research.project.detail');
 
 Route::get('/research/publications', [HomeController::class, 'publications'])->name('research.publications');
 

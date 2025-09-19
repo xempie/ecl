@@ -105,7 +105,7 @@
             <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Research Director</h3>
         </div><!--end grid-->
 
-        <div class="grid md:grid-cols-12 grid-cols-1 mt-8 gap-[30px] items-center">
+        <div class="grid md:grid-cols-12 grid-cols-1 mt-8 gap-[30px] items-start">
             <div class="md:col-span-4">
                 <img src="{{ $director->image_url }}" class="w-full aspect-square object-cover rounded-md shadow-lg" alt="{{ $director->name }}">
             </div>
@@ -114,7 +114,16 @@
                     <h4 class="text-2xl font-semibold text-slate-900 mb-2">{{ $director->name }}</h4>
                     <p class="text-blue-600 font-medium mb-4">{{ $director->title }}</p>
                     @if($director->bio)
-                    <p class="text-slate-600 mb-6 leading-relaxed">{{ $director->bio }}</p>
+                    <div class="text-slate-600 mb-6 leading-relaxed text-sm">
+                        <div class="expandable-text" data-lines="10">
+                            <div class="text-content line-clamp-10">
+                                {!! nl2br(e($director->bio)) !!}
+                            </div>
+                            <button class="show-more-btn text-blue-600 hover:text-blue-800 text-xs font-medium mt-2 focus:outline-none cursor-pointer" onclick="toggleText(this)">
+                                Show more...
+                            </button>
+                        </div>
+                    </div>
                     @endif
                     
                     <div class="grid md:grid-cols-2 gap-4 mb-6">
@@ -171,7 +180,7 @@
             <p class="text-slate-400 max-w-xl mx-auto">Our Auckland team specializes in immersive AR/VR research and collaborative interface development.</p>
         </div><!--end grid-->
 
-        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 mt-8 gap-[30px]">
+        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 mt-4 gap-[30px]">
             @forelse($aucklandMembers as $member)
                 <div class="h-full">
                     <a href="{{ url('/team/' . $member->slug) }}" class="block h-full group">
@@ -182,19 +191,19 @@
                                 <p class="text-slate-600 text-sm group-hover:text-slate-700 transition-colors">{{ $member->title }}</p>
                                 <div class="flex space-x-2 mt-4">
                                     @if($member->social_email)
-                                    <a href="mailto:{{ $member->social_email }}" class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition-colors">
+                                    <span class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md">
                                         <i data-feather="mail" class="size-3"></i>
-                                    </a>
+                                    </span>
                                     @endif
                                     @if($member->social_linkedin)
-                                    <a href="{{ $member->social_linkedin }}" target="_blank" class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition-colors">
+                                    <span class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md">
                                         <i data-feather="linkedin" class="size-3"></i>
-                                    </a>
+                                    </span>
                                     @endif
                                     @if($member->social_google_scholar)
-                                    <a href="{{ $member->social_google_scholar }}" target="_blank" class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md hover:bg-blue-200 transition-colors">
+                                    <span class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md">
                                         <i data-feather="book-open" class="size-3"></i>
-                                    </a>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
@@ -216,7 +225,7 @@
             <p class="text-slate-400 max-w-xl mx-auto">Our Adelaide team focuses on AI emotion recognition and machine learning applications for empathic systems.</p>
         </div><!--end grid-->
 
-        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 mt-8 gap-[30px]">
+        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 mt-4 gap-[30px]">
             @forelse($adelaideMembers as $member)
                 <div class="h-full">
                     <a href="{{ url('/team/' . $member->slug) }}" class="block h-full group">
@@ -227,19 +236,19 @@
                                 <p class="text-slate-600 text-sm group-hover:text-slate-700 transition-colors">{{ $member->title }}</p>
                                 <div class="flex space-x-2 mt-4">
                                     @if($member->social_email)
-                                    <a href="mailto:{{ $member->social_email }}" class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md hover:bg-emerald-200 transition-colors">
+                                    <span class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md">
                                         <i data-feather="mail" class="size-3"></i>
-                                    </a>
+                                    </span>
                                     @endif
                                     @if($member->social_linkedin)
-                                    <a href="{{ $member->social_linkedin }}" target="_blank" class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md hover:bg-emerald-200 transition-colors">
+                                    <span class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md">
                                         <i data-feather="linkedin" class="size-3"></i>
-                                    </a>
+                                    </span>
                                     @endif
                                     @if($member->social_google_scholar)
-                                    <a href="{{ $member->social_google_scholar }}" target="_blank" class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md hover:bg-emerald-200 transition-colors">
+                                    <span class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md">
                                         <i data-feather="book-open" class="size-3"></i>
-                                    </a>
+                                    </span>
                                     @endif
                                 </div>
                             </div>
@@ -398,5 +407,46 @@
     display: flex;
     flex-direction: column;
 }
+
+/* Expandable text styles */
+.line-clamp-10 {
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.expandable-text .text-content {
+    transition: all 0.3s ease;
+}
+
+.expandable-text.expanded .text-content {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    display: block;
+}
 </style>
+@endpush
+
+@push('scripts')
+<script>
+// Expandable text functionality
+function toggleText(button) {
+    const expandableDiv = button.closest('.expandable-text');
+    const textContent = expandableDiv.querySelector('.text-content');
+    const isExpanded = expandableDiv.classList.contains('expanded');
+
+    if (isExpanded) {
+        // Collapse the text
+        expandableDiv.classList.remove('expanded');
+        textContent.classList.add('line-clamp-10');
+        button.textContent = 'Show more...';
+    } else {
+        // Expand the text
+        expandableDiv.classList.add('expanded');
+        textContent.classList.remove('line-clamp-10');
+        button.textContent = 'Show less';
+    }
+}
+</script>
 @endpush

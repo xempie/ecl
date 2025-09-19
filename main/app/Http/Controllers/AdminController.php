@@ -82,9 +82,7 @@ class AdminController extends Controller
             'bio' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'lab_location' => 'required|in:auckland,adelaide,director',
-            'member_category' => 'required|string|max:20',
             'position_order' => 'nullable|integer',
-            'status' => 'required|in:active,inactive,alumni',
             'social_linkedin' => 'nullable|url',
             'social_email' => 'nullable|email',
             'social_website' => 'nullable|url',
@@ -96,7 +94,11 @@ class AdminController extends Controller
         ]);
 
         $data = $request->all();
-        
+
+        // Set default values for removed fields
+        $data['member_category'] = 'Lab Member';
+        $data['status'] = 'active';
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->extension();
@@ -133,9 +135,7 @@ class AdminController extends Controller
             'bio' => 'nullable|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'lab_location' => 'required|in:auckland,adelaide,director',
-            'member_category' => 'required|string|max:20',
             'position_order' => 'nullable|integer',
-            'status' => 'required|in:active,inactive,alumni',
             'social_linkedin' => 'nullable|url',
             'social_email' => 'nullable|email',
             'social_website' => 'nullable|url',
@@ -147,7 +147,15 @@ class AdminController extends Controller
         ]);
 
         $data = $request->all();
-        
+
+        // Preserve existing values for removed fields if they don't exist in data
+        if (!isset($data['member_category'])) {
+            $data['member_category'] = $member->member_category ?? 'Lab Member';
+        }
+        if (!isset($data['status'])) {
+            $data['status'] = $member->status ?? 'active';
+        }
+
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($member->image && file_exists(public_path($member->image))) {
@@ -195,7 +203,7 @@ class AdminController extends Controller
     {
         $members = Member::ordered()->get(); // Get all members, not just active ones
         $categories = Category::active()->ordered()->get();
-        $projects = Project::active()->ordered()->get(); // Get all active projects
+        $projects = Project::ordered()->get(); // Get all projects regardless of status
         return view('admin.publications.create', compact('members', 'categories', 'projects'));
     }
 
@@ -212,7 +220,6 @@ class AdminController extends Controller
             'download_url' => 'nullable|url',
             'abstract' => 'nullable|string',
             'type' => 'required|in:journal,conference,book_chapter,workshop,preprint',
-            'status' => 'required|in:published,in_press,submitted,under_review',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_featured' => 'boolean',
             'project_id' => 'nullable|exists:projects,id',
@@ -223,6 +230,7 @@ class AdminController extends Controller
         ]);
 
         $data = $request->except(['categories', 'members']); // Exclude relationship data
+
 
         if ($request->hasFile('image')) {
             $imageFile = $request->file('image');
@@ -274,8 +282,8 @@ class AdminController extends Controller
     {
         $members = Member::active()->ordered()->get();
         $categories = Category::active()->ordered()->get();
-        $projects = Project::active()->ordered()->get(); // Add missing projects variable
-        $publication->load(['members', 'categories']);
+        $projects = Project::ordered()->get(); // Get all projects regardless of status
+        $publication->load(['members', 'categories', 'project']);
         return view('admin.publications.edit', compact('publication', 'members', 'categories', 'projects'));
     }
 
@@ -292,9 +300,9 @@ class AdminController extends Controller
             'download_url' => 'nullable|url',
             'abstract' => 'nullable|string',
             'type' => 'required|in:journal,conference,book_chapter,workshop,preprint',
-            'status' => 'required|in:published,in_press,submitted,under_review',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'is_featured' => 'boolean',
+            'project_id' => 'nullable|exists:projects,id',
             'members' => 'nullable|array|max:10',
             'members.*' => 'exists:members,id',
             'categories' => 'nullable|array|max:5',
@@ -302,6 +310,7 @@ class AdminController extends Controller
         ]);
 
         $data = $request->except(['categories', 'members']); // Exclude relationship data
+
 
         if ($request->hasFile('image')) {
             // Delete old image if exists

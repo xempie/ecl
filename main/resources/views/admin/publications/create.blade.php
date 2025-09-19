@@ -138,33 +138,46 @@
                     <div class="relative overflow-hidden rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6">
                         <h6 class="text-lg font-semibold mb-4">Publication Image</h6>
                         <div class="space-y-4">
-                            <input type="file" id="image" name="image" accept="image/*"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                            <div class="relative">
+                                <input type="file" id="image" name="image" accept="image/*" class="sr-only">
+                                <label for="image" class="cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600">
+                                    <i class="uil uil-upload mr-2"></i>
+                                    Choose Image File
+                                </label>
+                                <span id="file-name-publication" class="ml-3 text-sm text-gray-500">No file selected</span>
+                            </div>
                             @error('image')
                             <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                             @enderror
                             <p class="text-sm text-gray-500">Upload an image for the publication. Will be cropped to square and resized to 200x200px. Max size: 2MB</p>
+
+                            <script>
+                                document.getElementById('image').addEventListener('change', function(e) {
+                                    const fileName = e.target.files[0] ? e.target.files[0].name : 'No file selected';
+                                    document.getElementById('file-name-publication').textContent = fileName;
+                                });
+                            </script>
                         </div>
                     </div>
 
                     <!-- Lab Members Contributions -->
-                    <div class="relative overflow-hidden rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6">
+                    <div class="relative rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900 p-6" style="overflow: visible;">
                         <h6 class="text-lg font-semibold mb-6">Lab Members Contributions</h6>
                         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">Select up to 10 lab members who contributed to this publication.</p>
-                        
+
                         <!-- Member Search Container -->
-                        <div class="relative mb-4">
+                        <div class="relative mb-4" style="z-index: 1000;">
                             <!-- Member Search Input -->
                             <div class="relative">
-                                <input type="text" id="member-search" placeholder="Search lab members..." 
+                                <input type="text" id="member-search" placeholder="Search lab members..."
                                     class="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                                 <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                     <i class="uil uil-search text-gray-400"></i>
                                 </div>
                             </div>
-                            
+
                             <!-- Search Results Dropdown -->
-                            <div id="search-results" class="hidden absolute z-50 w-full mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto">
+                            <div id="search-results" class="hidden absolute w-full mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg max-h-60 overflow-y-auto" style="z-index: 9999;">
                                 <!-- Search results will appear here -->
                             </div>
                         </div>
@@ -206,19 +219,6 @@
                             @enderror
                         </div>
 
-                        <!-- Status -->
-                        <div class="mb-4">
-                            <label for="status" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Status *</label>
-                            <select id="status" name="status" required
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                @foreach(\App\Models\Publication::getPublicationStatuses() as $key => $value)
-                                    <option value="{{ $key }}" {{ old('status', 'published') === $key ? 'selected' : '' }}>{{ $value }}</option>
-                                @endforeach
-                            </select>
-                            @error('status')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
 
 
                         <!-- Related Project -->

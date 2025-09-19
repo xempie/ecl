@@ -53,7 +53,7 @@
 
         <!-- Advanced Filter Section -->
         <div class="relative mb-12">
-            <div class="bg-gray-100 dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-slate-600">
+            <div class="bg-gray-100 dark:bg-slate-800 rounded-2xl p-8 border border-gray-200 dark:border-slate-600">
                 <!-- Filter Header -->
                 <div class="flex items-center justify-between mb-6">
                     <div class="flex items-center space-x-3">
@@ -65,7 +65,7 @@
                             <p class="text-sm text-slate-500 dark:text-slate-400">Find research by year, topic, or publication type</p>
                         </div>
                     </div>
-                    <button id="resetFilters" class="text-sm font-medium text-blue-600 hover:text-blue-700 duration-300 flex items-center space-x-1">
+                    <button id="resetFilters" class="text-sm font-medium text-blue-600 hover:text-blue-700 duration-300 flex items-center cursor-pointer" style="gap: 6px;">
                         <i class="uil uil-redo text-xs"></i>
                         <span>Reset Filters</span>
                     </button>
@@ -146,13 +146,9 @@
                     <!-- Filter Actions -->
                     <div class="flex flex-wrap items-center justify-between mt-6 pt-6 border-t border-gray-200 dark:border-slate-600">
                         <div class="flex flex-wrap items-center gap-3 mb-3 md:mb-0">
-                            <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-colors duration-300 flex items-center space-x-2">
+                            <button type="submit" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-colors duration-300 flex items-center space-x-2 cursor-pointer">
                                 <i class="uil uil-filter text-sm"></i>
                                 <span>Apply Filters</span>
-                            </button>
-                            <button type="button" id="clearFilters" class="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium rounded-xl transition-colors duration-300 flex items-center space-x-2">
-                                <i class="uil uil-times text-sm"></i>
-                                <span>Clear All</span>
                             </button>
                         </div>
                         
@@ -169,7 +165,7 @@
         </div>
 
         <!-- Publications List -->
-        <div class="grid grid-cols-1 gap-8">
+        <div class="grid grid-cols-1 gap-9">
             @forelse($publications as $index => $publication)
                 @php
                     $colors = [
@@ -183,14 +179,14 @@
                 @endphp
                 
                 <!-- Publication {{ $loop->iteration }} -->
-                <div class="group relative p-6 shadow-md dark:shadow-gray-800 bg-white dark:bg-slate-900 rounded-xl hover:shadow-xl transition-all duration-500 border-l-4 border-{{ $color['border'] }}">
-                    <div class="flex items-start justify-between">
+                <div class="group relative p-6 bg-gray-50 dark:bg-slate-800 rounded-xl transition-all duration-300 border-l-4 border-{{ $color['border'] }}" style="margin-bottom: 36px; border: 1px solid #ddd;">
+                    <div class="flex items-start gap-4">
                         <!-- Publication Image -->
-                        <div class="w-20 h-20 bg-{{ $color['bg'] }} rounded-lg mr-4 flex-shrink-0 flex items-center justify-center" style="margin-top: 48px">
+                        <div class="w-20 h-20 bg-{{ $color['bg'] }} rounded-lg flex-shrink-0 flex items-center justify-center" style="margin-top: 48px">
                             <img src="{{ $publication->image_url ?? asset('assets/images/publications/default-publication.jpg') }}" class="w-full h-full object-cover rounded-lg" alt="{{ $publication->title }}">
                         </div>
-                        
-                        <div class="flex-1 ml-8">
+
+                        <div class="flex-1">
                             <!-- Publication Type Badges -->
                             <div class="flex items-center gap-3 mb-3">
                                 <span class="bg-{{ $color['bg'] }} text-{{ $color['text'] }} text-xs px-3 py-1 rounded-full font-medium">{{ ucfirst($publication->type) }}</span>
@@ -212,6 +208,11 @@
                                     {{ $publication->title }}
                                 @endif
                             </h5>
+
+                            <!-- Full Authors List -->
+                            @if($publication->authors)
+                            <p class="text-slate-500 mb-3" style="font-size: 12px; line-height: 1.4;">{{ $publication->authors }}</p>
+                            @endif
                             
                             <!-- Journal/Conference -->
                             <div class="flex items-center gap-4 mb-3 text-sm text-slate-600">
@@ -221,32 +222,23 @@
                                 @if($publication->conference)
                                 <span><strong>Conference:</strong> {{ $publication->conference }}</span>
                                 @endif
-                                @if($publication->doi)
-                                <span><strong>DOI:</strong> {{ $publication->doi }}</span>
-                                @endif
                             </div>
                             
                             <!-- Abstract -->
                             @if($publication->abstract)
-                            <p class="text-slate-400 mb-4">
-                                {{ Str::limit($publication->abstract, 200) }}
-                            </p>
+                            <div class="text-slate-500 text-sm mb-4">
+                                <div class="expandable-text" data-lines="2">
+                                    <div class="text-content line-clamp-2">
+                                        {{ $publication->abstract }}
+                                    </div>
+                                    <button class="show-more-btn text-blue-600 hover:text-blue-800 text-xs font-medium mt-1 focus:outline-none cursor-pointer" onclick="toggleText(this)">
+                                        Show more...
+                                    </button>
+                                </div>
+                            </div>
                             @endif
                             
-                            <!-- Authors -->
-                            <div class="flex flex-wrap items-center gap-1 mb-3">
-                                <span class="text-sm text-slate-600 dark:text-slate-300"><strong>Authors:</strong> {{ $publication->authors }}</span>
-                            </div>
 
-                            <!-- Lab Members -->
-                            @if($publication->members->count() > 0)
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                <span class="text-sm text-slate-500">Lab Members:</span>
-                                @foreach($publication->members as $member)
-                                    <a href="{{ url('/team/' . $member->slug) }}" class="text-sm bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 py-1 rounded-md transition-colors">{{ $member->name }}</a>
-                                @endforeach
-                            </div>
-                            @endif
 
                             <!-- Categories -->
                             @if($publication->categories->count() > 0)
@@ -256,20 +248,31 @@
                                 @endforeach
                             </div>
                             @endif
-                        </div>
-                        
-                        <!-- Action Buttons -->
-                        <div class="flex flex-col gap-2 ml-6">
-                            @if($publication->url)
-                            <a href="{{ $publication->url }}" target="_blank" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-{{ $color['text'] }} hover:bg-{{ str_replace('-600', '-700', $color['text']) }} text-white rounded-full" title="View Publication">
-                                <i class="uil uil-eye"></i>
-                            </a>
-                            @endif
-                            @if($publication->download_url)
-                            <a href="{{ $publication->download_url }}" target="_blank" class="size-10 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-emerald-600 hover:bg-emerald-700 text-white rounded-full" title="Download PDF">
-                                <i class="uil uil-download-alt"></i>
-                            </a>
-                            @endif
+
+                            <!-- Publication Links -->
+                            <div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-gray-100 dark:border-gray-700">
+                                @if($publication->url)
+                                    <a href="{{ $publication->url }}" target="_blank"
+                                       class="inline-flex items-center px-3 py-1 text-xs font-medium text-blue-600 bg-blue-50 border border-blue-200 rounded-md hover:bg-blue-100 transition-colors">
+                                        <i class="uil uil-external-link-alt mr-1"></i>
+                                        View Publication
+                                    </a>
+                                @endif
+                                @if($publication->download_url)
+                                    <a href="{{ $publication->download_url }}" target="_blank"
+                                       class="inline-flex items-center px-3 py-1 text-xs font-medium text-green-600 bg-green-50 border border-green-200 rounded-md hover:bg-green-100 transition-colors">
+                                        <i class="uil uil-download-alt mr-1"></i>
+                                        Download PDF
+                                    </a>
+                                @endif
+                                @if($publication->doi)
+                                    <a href="https://doi.org/{{ $publication->doi }}" target="_blank"
+                                       class="inline-flex items-center px-3 py-1 text-xs font-medium text-purple-600 bg-purple-50 border border-purple-200 rounded-md hover:bg-purple-100 transition-colors">
+                                        <i class="uil uil-link mr-1"></i>
+                                        DOI
+                                    </a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -297,21 +300,35 @@
 
 @endsection
 
+@push('styles')
+<style>
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.expandable-text .text-content {
+    transition: all 0.3s ease;
+}
+
+.expandable-text.expanded .text-content {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    display: block;
+}
+</style>
+@endpush
+
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Auto-submit form when select options change
-    const filterSelects = document.querySelectorAll('.filter-form select');
-    filterSelects.forEach(select => {
-        select.addEventListener('change', function() {
-            this.form.submit();
-        });
-    });
+    // Remove auto-submit functionality - filters only apply when button is pressed
 
     // Clear filters functionality
-    const clearFiltersBtn = document.getElementById('clearFilters');
     const resetFiltersBtn = document.getElementById('resetFilters');
-    
+
     function clearAllFilters() {
         const form = document.querySelector('.filter-form');
         form.reset();
@@ -319,25 +336,30 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = "{{ route('research.publications') }}";
     }
 
-    if (clearFiltersBtn) {
-        clearFiltersBtn.addEventListener('click', clearAllFilters);
-    }
-    
     if (resetFiltersBtn) {
         resetFiltersBtn.addEventListener('click', clearAllFilters);
     }
 
-    // Search input debounce
-    const searchInput = document.querySelector('input[name="search"]');
-    if (searchInput) {
-        let searchTimeout;
-        searchInput.addEventListener('input', function() {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                this.form.submit();
-            }, 500); // Wait 500ms after user stops typing
-        });
-    }
+    // Remove search input auto-submit - search only applies when button is pressed
 });
+
+// Expandable text functionality
+function toggleText(button) {
+    const expandableDiv = button.closest('.expandable-text');
+    const textContent = expandableDiv.querySelector('.text-content');
+    const isExpanded = expandableDiv.classList.contains('expanded');
+
+    if (isExpanded) {
+        // Collapse the text
+        expandableDiv.classList.remove('expanded');
+        textContent.classList.add('line-clamp-2');
+        button.textContent = 'Show more...';
+    } else {
+        // Expand the text
+        expandableDiv.classList.add('expanded');
+        textContent.classList.remove('line-clamp-2');
+        button.textContent = 'Show less';
+    }
+}
 </script>
 @endpush

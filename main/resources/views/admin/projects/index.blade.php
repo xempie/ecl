@@ -22,7 +22,7 @@
 
         <!-- Success Message -->
         @if(session('success'))
-        <div class="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+        <div class="mt-4 p-4 bg-green-100 text-green-700 rounded-md" style="border:1px solid #ccc">
             {{ session('success') }}
         </div>
         @endif
@@ -41,17 +41,16 @@
                                 <th scope="col" class="px-6 py-3">Project</th>
                                 <th scope="col" class="px-6 py-3">Type</th>
                                 <th scope="col" class="px-6 py-3">Status</th>
-                                <th scope="col" class="px-6 py-3">Team Members</th>
                                 <th scope="col" class="px-6 py-3">Featured</th>
                                 <th scope="col" class="px-6 py-3">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($projects as $project)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onclick="window.location='{{ route('admin.projects.edit', $project) }}'">
                                 <td class="px-6 py-4">
-                                    <div class="flex items-center">
-                                        <div class="w-12 h-12 rounded overflow-hidden mr-3 flex-shrink-0">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-12 h-12 rounded overflow-hidden flex-shrink-0">
                                             <img src="{{ $project->image_url }}" alt="{{ $project->title }}" class="w-full h-full object-cover">
                                         </div>
                                         <div class="flex-grow min-w-0">
@@ -73,31 +72,13 @@
                                     </span>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium 
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
                                         @if($project->status === 'active') bg-green-100 text-green-800
                                         @elseif($project->status === 'completed') bg-gray-100 text-gray-800
                                         @else bg-yellow-100 text-yellow-800
                                         @endif">
                                         {{ $project->status_display }}
                                     </span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    @if($project->members->count() > 0)
-                                        <div class="flex -space-x-1 overflow-hidden">
-                                            @foreach($project->members->take(3) as $member)
-                                            <div class="w-6 h-6 rounded-full bg-blue-500 border border-white flex items-center justify-center text-xs text-white font-semibold" title="{{ $member->name }}">
-                                                {{ substr($member->name, 0, 1) }}
-                                            </div>
-                                            @endforeach
-                                            @if($project->members->count() > 3)
-                                            <div class="w-6 h-6 rounded-full bg-gray-500 border border-white flex items-center justify-center text-xs text-white font-semibold">
-                                                +{{ $project->members->count() - 3 }}
-                                            </div>
-                                            @endif
-                                        </div>
-                                    @else
-                                        <span class="text-gray-400">-</span>
-                                    @endif
                                 </td>
                                 <td class="px-6 py-4">
                                     @if($project->is_featured)
@@ -110,17 +91,17 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex space-x-2">
-                                        <a href="{{ route('admin.projects.show', $project) }}" class="text-blue-600 hover:text-blue-800" title="View">
+                                        <a href="{{ route('admin.projects.show', $project) }}" class="text-blue-600 hover:text-blue-800 text-xl" title="View">
                                             <i class="uil uil-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.projects.edit', $project) }}" class="text-indigo-600 hover:text-indigo-800" title="Edit">
+                                        <a href="{{ route('admin.projects.edit', $project) }}" class="text-indigo-600 hover:text-indigo-800 text-xl" title="Edit">
                                             <i class="uil uil-edit"></i>
                                         </a>
-                                        <form method="POST" action="{{ route('admin.projects.destroy', $project) }}" class="inline" 
+                                        <form method="POST" action="{{ route('admin.projects.destroy', $project) }}" class="inline"
                                               onsubmit="return confirm('Are you sure you want to delete this project?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-800" title="Delete">
+                                            <button type="submit" class="text-red-600 hover:text-red-800 text-xl" title="Delete">
                                                 <i class="uil uil-trash"></i>
                                             </button>
                                         </form>
@@ -129,7 +110,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+                                <td colspan="5" class="px-6 py-4 text-center text-gray-500">
                                     No projects found. <a href="{{ route('admin.projects.create') }}" class="text-blue-600 hover:text-blue-800">Add the first project</a>
                                 </td>
                             </tr>
