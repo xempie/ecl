@@ -17,7 +17,9 @@ class Project extends Model
         'categories',
         'image',
         'is_featured',
-        'position_order'
+        'position_order',
+        'created_by',
+        'updated_by'
     ];
 
     protected $casts = [

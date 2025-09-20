@@ -25,7 +25,9 @@ class Publication extends Model
         'is_featured',
         'citation_count',
         'publication_date',
-        'project_id'
+        'project_id',
+        'created_by',
+        'updated_by'
     ];
 
     protected $casts = [

@@ -32,7 +32,9 @@ class Member extends Model
         'research_interests',
         'qualifications',
         'achievements',
-        'is_featured'
+        'is_featured',
+        'created_by',
+        'updated_by'
     ];
 
     protected $casts = [

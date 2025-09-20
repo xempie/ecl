@@ -110,6 +110,10 @@ class AdminController extends Controller
             $data['slug'] = Str::slug($data['name']);
         }
 
+        // Set audit fields
+        $data['created_by'] = auth()->id();
+        $data['updated_by'] = auth()->id();
+
         Member::create($data);
 
         return redirect()->route('admin.members')->with('success', 'Member created successfully.');
@@ -171,6 +175,9 @@ class AdminController extends Controller
         if ($member->name !== $data['name'] && empty($data['slug'])) {
             $data['slug'] = Str::slug($data['name']);
         }
+
+        // Set audit field for updates
+        $data['updated_by'] = auth()->id();
 
         $member->update($data);
 
@@ -252,6 +259,10 @@ class AdminController extends Controller
         if (empty($data['slug'])) {
             $data['slug'] = Str::slug($data['title']);
         }
+
+        // Set audit fields
+        $data['created_by'] = auth()->id();
+        $data['updated_by'] = auth()->id();
 
         $publication = Publication::create($data);
 
@@ -337,6 +348,9 @@ class AdminController extends Controller
         if ($publication->title !== $data['title'] && empty($data['slug'])) {
             $data['slug'] = Str::slug($data['title']);
         }
+
+        // Set audit field for updates
+        $data['updated_by'] = auth()->id();
 
         $publication->update($data);
 
@@ -430,6 +444,10 @@ class AdminController extends Controller
             $data['slug'] = Str::slug($data['title']);
         }
 
+        // Set audit fields
+        $data['created_by'] = auth()->id();
+        $data['updated_by'] = auth()->id();
+
         $project = Project::create($data);
 
         // Attach members with order
@@ -507,6 +525,9 @@ class AdminController extends Controller
         if ($project->title !== $data['title'] && empty($data['slug'])) {
             $data['slug'] = Str::slug($data['title']);
         }
+
+        // Set audit field for updates
+        $data['updated_by'] = auth()->id();
 
         $project->update($data);
 
@@ -1075,6 +1096,10 @@ class AdminController extends Controller
             $userData['email_verified_at'] = now();
         }
 
+        // Set audit fields
+        $userData['created_by'] = auth()->id();
+        $userData['updated_by'] = auth()->id();
+
         $user = User::create($userData);
 
         // TODO: Send welcome email if requested
@@ -1118,6 +1143,9 @@ class AdminController extends Controller
         if ($request->verify_email && !$user->email_verified_at) {
             $userData['email_verified_at'] = now();
         }
+
+        // Set audit field for updates
+        $userData['updated_by'] = auth()->id();
 
         $user->update($userData);
 
