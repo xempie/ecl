@@ -14,15 +14,6 @@
                             <p class="text-white/70 text-lg max-w-2xl mx-auto">
                                 Exploring the intersection of technology and human emotion to create more empathetic and intuitive computing systems that understand and respond to human needs.
                             </p>
-                            
-                            <div class="mt-6">
-                                <a href="{{ url('/research') }}" class="py-3 px-6 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md me-2">
-                                    Explore Research
-                                </a>
-                                <a href="{{ url('/about') }}" class="py-3 px-6 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent hover:bg-white border-white hover:border-white text-white hover:text-slate-900 rounded-md">
-                                    Learn More
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,15 +33,6 @@
                             <p class="text-white/70 text-lg max-w-2xl mx-auto">
                                 Our interdisciplinary approach combines computer science, psychology, and design to develop computing systems that are more intuitive, accessible, and emotionally intelligent.
                             </p>
-                            
-                            <div class="mt-6">
-                                <a href="{{ url('/team') }}" class="py-3 px-6 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md me-2">
-                                    Meet Our Team
-                                </a>
-                                <a href="{{ url('/publications') }}" class="py-3 px-6 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent hover:bg-white border-white hover:border-white text-white hover:text-slate-900 rounded-md">
-                                    View Publications
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -70,15 +52,6 @@
                             <p class="text-white/70 text-lg max-w-2xl mx-auto">
                                 From emotion recognition systems to adaptive user interfaces, we're developing the next generation of empathetic computing technologies that understand and adapt to human behavior.
                             </p>
-                            
-                            <div class="mt-6">
-                                <a href="{{ url('/projects') }}" class="py-3 px-6 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md me-2">
-                                    View Projects
-                                </a>
-                                <a href="{{ url('/events') }}" class="py-3 px-6 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-transparent hover:bg-white border-white hover:border-white text-white hover:text-slate-900 rounded-md">
-                                    Upcoming Events
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,8 +61,8 @@
     <!-- end swiper-wrapper -->
 
     <!-- Swiper controls -->
-    <div class="swiper-button-next bg-transparent size-[45px] leading-[45px] -mt-[22px] bg-none border border-solid border-white/50 text-white hover:bg-blue-600 hover:border-blue-600 rounded-full text-center"></div>
-    <div class="swiper-button-prev bg-transparent size-[45px] leading-[45px] -mt-[22px] bg-none border border-solid border-white/50 text-white hover:bg-blue-600 hover:border-blue-600 rounded-full text-center"></div>
+    <div class="swiper-button-next bg-gray-200/30 size-[60px] leading-[60px] -mt-[30px] bg-none text-white hover:bg-blue-600 hover:bg-opacity-80 rounded-lg text-center text-xl"></div>
+    <div class="swiper-button-prev bg-gray-200/30 size-[60px] leading-[60px] -mt-[30px] bg-none text-white hover:bg-blue-600 hover:bg-opacity-80 rounded-lg text-center text-xl"></div>
     
     <!-- Pagination dots -->
     <div class="swiper-pagination"></div>

@@ -12,9 +12,13 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/research', [HomeController::class, 'research'])->name('research');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/news', [HomeController::class, 'news'])->name('news');
+Route::get('/news/{slug}', [HomeController::class, 'newsDetail'])->name('news.detail');
 Route::get('/events', [HomeController::class, 'events'])->name('events');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact-us');
+Route::match(['GET', 'POST'], '/contact', [HomeController::class, 'contact'])->name('contact');
+Route::match(['GET', 'POST'], '/contact-us', [HomeController::class, 'contact'])->name('contact-us');
+Route::get('/join-us', function () {
+    return view('join-us');
+})->name('join-us');
 
 // Research subpages
 Route::get('/research/projects', [HomeController::class, 'projects'])->name('research.projects');
@@ -75,13 +79,19 @@ Route::prefix('labadmin')->middleware('auth')->group(function () {
     Route::delete('/categories/{category}', [App\Http\Controllers\AdminController::class, 'destroyCategory'])->name('admin.categories.destroy');
 
     // News Management Routes
-    Route::get('/news', [App\Http\Controllers\AdminController::class, 'news'])->name('admin.news');
-    Route::get('/news/create', [App\Http\Controllers\AdminController::class, 'createNews'])->name('admin.news.create');
-    Route::post('/news', [App\Http\Controllers\AdminController::class, 'storeNews'])->name('admin.news.store');
-    Route::get('/news/{news}', [App\Http\Controllers\AdminController::class, 'showNews'])->name('admin.news.show');
-    Route::get('/news/{news}/edit', [App\Http\Controllers\AdminController::class, 'editNews'])->name('admin.news.edit');
-    Route::put('/news/{news}', [App\Http\Controllers\AdminController::class, 'updateNews'])->name('admin.news.update');
-    Route::delete('/news/{news}', [App\Http\Controllers\AdminController::class, 'destroyNews'])->name('admin.news.destroy');
+    Route::resource('news', App\Http\Controllers\Admin\NewsController::class, [
+        'as' => 'admin',
+        'names' => [
+            'index' => 'admin.news.index',
+            'create' => 'admin.news.create',
+            'store' => 'admin.news.store',
+            'show' => 'admin.news.show',
+            'edit' => 'admin.news.edit',
+            'update' => 'admin.news.update',
+            'destroy' => 'admin.news.destroy',
+        ]
+    ]);
+    Route::patch('/news/{news}/toggle-featured', [App\Http\Controllers\Admin\NewsController::class, 'toggleFeatured'])->name('admin.news.toggleFeatured');
 
     // Events Management Routes
     Route::get('/events', [App\Http\Controllers\AdminController::class, 'events'])->name('admin.events');

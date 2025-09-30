@@ -11,7 +11,7 @@
 @include('components.hero-slider')
 
 <!-- Quick Access Cards (keeping these as they're useful) -->
-<section class="relative bg-gray-50 dark:bg-slate-800 md:py-24 py-16">
+<section class="relative bg-gray-50 dark:bg-slate-800 md:py-24 py-16 hidden">
     <div class="container relative">
         <div class="grid grid-cols-1 justify-center">
             <div class="relative z-2 duration-500 sm:-mt-[200px] -mt-[140px] m-0">
@@ -102,46 +102,8 @@
 <!-- Blog Posts Section -->
 @include('components.blog-posts-section')
 
+<!-- Collaboration Partners Section -->
+@include('components.collaboration-partners-section')
+
 @endsection
 
-@push('scripts')
-<script>
-    // Initialize Swiper for hero slider
-    document.addEventListener('DOMContentLoaded', function() {
-        if (typeof Swiper !== 'undefined') {
-            var heroSwiper = new Swiper('.mySwiper', {
-                slidesPerView: 1,
-                spaceBetween: 0,
-                loop: true,
-                autoplay: {
-                    delay: 600000, // 10 minutes = 600000ms
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                // Simple slide transition (right to left)
-                effect: 'slide',
-                speed: 800,
-                // Direction: slides move from right to left
-                direction: 'horizontal',
-                // Custom event handling for infinite loop with left transition
-                on: {
-                    slideChange: function () {
-                        console.log('Slide changed to:', this.realIndex + 1);
-                    },
-                    autoplayTimeLeft: function (s, time, progress) {
-                        // Optional: You can add a timer display here
-                        // console.log('Time left:', Math.ceil(time / 1000) + 's');
-                    }
-                }
-            });
-        }
-    });
-</script>
-@endpush

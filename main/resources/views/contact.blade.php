@@ -97,6 +97,23 @@
                         </p>
                     </div>
 
+                    <!-- Success/Error Messages -->
+                    @if(session('success'))
+                        <div class="bg-emerald-100 border border-emerald-400 text-emerald-700 px-4 py-3 rounded mb-6">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if($errors->any())
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+                            <ul class="mb-0">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form class="space-y-6" method="POST" action="{{ route('contact') }}" enctype="multipart/form-data">
                         @csrf
                         
@@ -104,11 +121,11 @@
                         <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
-                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors" style="border-color: #ccc;" placeholder="Your full name">
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors" style="border-color: #ccc;" placeholder="Your full name">
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email Address *</label>
-                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors" style="border-color: #ccc;" placeholder="your.email@example.com">
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors" style="border-color: #ccc;" placeholder="your.email@example.com">
                             </div>
                         </div>
 
@@ -117,12 +134,12 @@
                             <label for="subject" class="block text-sm font-medium text-slate-700 mb-2">Subject *</label>
                             <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors" style="border-color: #ccc;">
                                 <option value="">Select inquiry type</option>
-                                <option value="research-collaboration">Research Collaboration</option>
-                                <option value="academic-partnership">Academic Partnership</option>
-                                <option value="job-application">Job Application</option>
-                                <option value="student-inquiry">Student Inquiry</option>
-                                <option value="media-inquiry">Media Inquiry</option>
-                                <option value="general-inquiry">General Inquiry</option>
+                                <option value="research-collaboration" {{ old('subject') == 'research-collaboration' ? 'selected' : '' }}>Research Collaboration</option>
+                                <option value="academic-partnership" {{ old('subject') == 'academic-partnership' ? 'selected' : '' }}>Academic Partnership</option>
+                                <option value="job-application" {{ old('subject') == 'job-application' ? 'selected' : '' }}>Job Application</option>
+                                <option value="student-inquiry" {{ old('subject') == 'student-inquiry' ? 'selected' : '' }}>Student Inquiry</option>
+                                <option value="media-inquiry" {{ old('subject') == 'media-inquiry' ? 'selected' : '' }}>Media Inquiry</option>
+                                <option value="general-inquiry" {{ old('subject') == 'general-inquiry' ? 'selected' : '' }}>General Inquiry</option>
                             </select>
                         </div>
 
@@ -136,7 +153,7 @@
                         <!-- Message -->
                         <div>
                             <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Message *</label>
-                            <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none" style="border-color: #ccc;" placeholder="Please describe your inquiry, research interests, or how we can help you..."></textarea>
+                            <textarea id="message" name="message" rows="6" required class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none" style="border-color: #ccc;" placeholder="Please describe your inquiry, research interests, or how we can help you...">{{ old('message') }}</textarea>
                         </div>
 
                         <!-- Submit Button -->

@@ -221,7 +221,7 @@
 /* Publications Section - Dotted Background Pattern */
 .publications-diagonal-bg {
     background-color: #f1f5f9 !important; /* Light slate gray background - force override */
-    background-image: 
+    background-image:
         radial-gradient(circle, rgba(148, 163, 184, 0.5) 1px, transparent 1px) !important;
     background-size: 20px 20px !important; /* Dot pattern spacing */
     background-position: 0 0 !important;
@@ -230,6 +230,23 @@
 /* Dark mode dotted pattern */
 .dark .publications-diagonal-bg {
     background-color: #0f172a !important; /* Dark slate background */
-    background-image: 
+    background-image:
         radial-gradient(circle, rgba(148, 163, 184, 0.4) 1px, transparent 1px) !important;
+}
+
+/* Menu Arrow Position Fix - Absolute positioning */
+#topnav .navigation-menu .menu-arrow {
+    position: absolute !important;
+    top: 38px !important;
+    transform: none !important;
+    transition: none !important;
+    border-width: 0 1px 1px 0 !important;
+}
+
+/* Ensure arrow position doesn't change on hover */
+#topnav .navigation-menu .parent-menu-item:hover .menu-arrow {
+    position: absolute !important;
+    top: 38px !important;
+    transform: none !important;
+    border-width: 0 1px 1px 0 !important;
 }

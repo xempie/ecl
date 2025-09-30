@@ -99,7 +99,7 @@
         @endif
 
         <!-- Projects Grid -->
-        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
             @forelse($projects as $project)
                 <a href="{{ route('research.project.detail', $project->slug) }}" class="group block">
                 <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 bg-white">
@@ -113,25 +113,6 @@
                         </div>
                         @endif
                         
-                        <!-- Status Badge -->
-                        <div class="absolute top-4 left-4">
-                            @if($project->status === 'active')
-                                <span class="px-3 py-1 bg-green-600 text-white text-xs font-medium rounded-full">Active</span>
-                            @elseif($project->status === 'completed')
-                                <span class="px-3 py-1 bg-blue-600 text-white text-xs font-medium rounded-full">Completed</span>
-                            @elseif($project->status === 'on_hold')
-                                <span class="px-3 py-1 bg-amber-600 text-white text-xs font-medium rounded-full">On Hold</span>
-                            @else
-                                <span class="px-3 py-1 bg-gray-600 text-white text-xs font-medium rounded-full">{{ ucfirst($project->status) }}</span>
-                            @endif
-                        </div>
-
-                        <!-- Year Badge -->
-                        @if($project->year)
-                        <div class="absolute top-4 right-4">
-                            <span class="px-3 py-1 bg-white/90 text-slate-700 text-xs font-medium rounded-full">{{ $project->year }}</span>
-                        </div>
-                        @endif
 
                         <!-- Overlay -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

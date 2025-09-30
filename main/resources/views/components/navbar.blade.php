@@ -47,9 +47,7 @@
                     </ul>
                 </li>
 
-                <li><a href="{{ url('/news') }}" class="sub-menu-item">News</a></li>
-
-                <li><a href="{{ url('/events') }}" class="sub-menu-item">Events</a></li>
+                <li><a href="{{ url('/join-us') }}" class="sub-menu-item">Join Us</a></li>
 
                 <li><a href="{{ url('/contact') }}" class="sub-menu-item">Contact</a></li>
             </ul><!--end navigation menu-->

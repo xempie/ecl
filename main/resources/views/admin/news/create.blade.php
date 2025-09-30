@@ -17,7 +17,7 @@
             </div>
 
             <div class="flex items-center">
-                <a href="{{ route('admin.news') }}" class="py-[7px] px-6 font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-gray-600/5 hover:bg-gray-600 border-gray-600/10 hover:border-gray-600 text-gray-600 hover:text-white rounded-md">
+                <a href="{{ route('admin.news.index') }}" class="py-[7px] px-6 font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-gray-600/5 hover:bg-gray-600 border-gray-600/10 hover:border-gray-600 text-gray-600 hover:text-white rounded-md">
                     <i class="uil uil-arrow-left"></i> Back to News
                 </a>
             </div>
@@ -58,32 +58,44 @@
 
                         <div class="grid lg:grid-cols-2 grid-cols-1 gap-6 mt-6">
                             <div>
-                                <label class="font-semibold" for="featured_image">Featured Image</label>
-                                <input id="featured_image" name="featured_image" type="file" accept="image/*"
-                                       class="form-input mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 @error('featured_image') border-red-500 @enderror">
-                                @error('featured_image')
+                                <label class="font-semibold" for="image">Featured Image</label>
+                                <input id="image" name="image" type="file" accept="image/*"
+                                       class="form-input mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 @error('image') border-red-500 @enderror">
+                                @error('image')
                                     <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
 
                             <div>
-                                <label class="font-semibold" for="published_at">Published Date</label>
-                                <input id="published_at" name="published_at" type="datetime-local" value="{{ old('published_at') }}"
-                                       class="form-input mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 @error('published_at') border-red-500 @enderror">
-                                @error('published_at')
+                                <label class="font-semibold" for="published_date">Published Date</label>
+                                <input id="published_date" name="published_date" type="datetime-local" value="{{ old('published_date') }}"
+                                       class="form-input mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 @error('published_date') border-red-500 @enderror">
+                                @error('published_date')
                                     <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="mt-6">
-                            <label class="font-semibold" for="excerpt">Excerpt</label>
-                            <textarea id="excerpt" name="excerpt" rows="3" 
-                                      class="form-input mt-2 w-full py-2 px-3 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 @error('excerpt') border-red-500 @enderror" 
-                                      placeholder="Brief description of the news article">{{ old('excerpt') }}</textarea>
-                            @error('excerpt')
-                                <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
-                            @enderror
+                        <div class="grid lg:grid-cols-2 grid-cols-1 gap-6 mt-6">
+                            <div>
+                                <label class="font-semibold" for="excerpt">Excerpt</label>
+                                <textarea id="excerpt" name="excerpt" rows="3"
+                                          class="form-input mt-2 w-full py-2 px-3 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 @error('excerpt') border-red-500 @enderror"
+                                          placeholder="Brief description of the news article">{{ old('excerpt') }}</textarea>
+                                @error('excerpt')
+                                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
+
+                            <div>
+                                <label class="font-semibold" for="author">Author</label>
+                                <input id="author" name="author" type="text" value="{{ old('author') }}"
+                                       class="form-input mt-2 w-full py-2 px-3 h-10 bg-transparent dark:bg-slate-900 dark:text-slate-200 rounded outline-none border border-gray-200 focus:border-indigo-600 dark:border-gray-800 dark:focus:border-indigo-600 focus:ring-0 @error('author') border-red-500 @enderror"
+                                       placeholder="Article author">
+                                @error('author')
+                                    <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
+                                @enderror
+                            </div>
                         </div>
 
                         <div class="mt-6">
@@ -140,7 +152,7 @@
                         </div>
 
                         <div class="mt-6 flex justify-end space-x-3">
-                            <a href="{{ route('admin.news') }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-gray-600/5 hover:bg-gray-600 border-gray-600/10 hover:border-gray-600 text-gray-600 hover:text-white rounded-md">Cancel</a>
+                            <a href="{{ route('admin.news.index') }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-gray-600/5 hover:bg-gray-600 border-gray-600/10 hover:border-gray-600 text-gray-600 hover:text-white rounded-md">Cancel</a>
                             <button type="submit" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md">Create News</button>
                         </div>
                     </form>

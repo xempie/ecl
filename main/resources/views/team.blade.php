@@ -107,11 +107,15 @@
 
         <div class="grid md:grid-cols-12 grid-cols-1 mt-8 gap-[30px] items-start">
             <div class="md:col-span-4">
-                <img src="{{ $director->image_url }}" class="w-full aspect-square object-cover rounded-md shadow-lg" alt="{{ $director->name }}">
+                <a href="{{ url('/team/' . $director->slug) }}" class="block">
+                    <img src="{{ $director->image_url }}" class="w-full aspect-square object-cover rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300" alt="{{ $director->name }}">
+                </a>
             </div>
             <div class="md:col-span-8">
                 <div class="p-6">
-                    <h4 class="text-2xl font-semibold text-slate-900 mb-2">{{ $director->name }}</h4>
+                    <a href="{{ url('/team/' . $director->slug) }}" class="hover:text-blue-600 transition-colors duration-300">
+                        <h4 class="text-2xl font-semibold text-slate-900 mb-2 hover:text-blue-600 transition-colors duration-300">{{ $director->name }}</h4>
+                    </a>
                     <p class="text-blue-600 font-medium mb-4">{{ $director->title }}</p>
                     @if($director->bio)
                     <div class="text-slate-600 mb-6 leading-relaxed text-sm">
@@ -191,18 +195,18 @@
                                 <p class="text-slate-600 text-sm group-hover:text-slate-700 transition-colors">{{ $member->title }}</p>
                                 <div class="flex space-x-2 mt-4">
                                     @if($member->social_email)
-                                    <span class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md">
-                                        <i data-feather="mail" class="size-3"></i>
+                                    <span class="size-6 inline-flex items-center justify-center bg-blue-50 text-blue-600 rounded-sm">
+                                        <i class="uil uil-envelope text-sm"></i>
                                     </span>
                                     @endif
                                     @if($member->social_linkedin)
-                                    <span class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md">
-                                        <i data-feather="linkedin" class="size-3"></i>
+                                    <span class="size-6 inline-flex items-center justify-center bg-blue-50 text-blue-600 rounded-sm">
+                                        <i class="uil uil-linkedin text-sm"></i>
                                     </span>
                                     @endif
                                     @if($member->social_google_scholar)
-                                    <span class="size-7 inline-flex items-center justify-center bg-blue-100 text-blue-600 rounded-md">
-                                        <i data-feather="book-open" class="size-3"></i>
+                                    <span class="size-6 inline-flex items-center justify-center bg-blue-50 text-blue-600 rounded-sm">
+                                        <i class="uil uil-graduation-cap text-sm"></i>
                                     </span>
                                     @endif
                                 </div>
@@ -236,18 +240,18 @@
                                 <p class="text-slate-600 text-sm group-hover:text-slate-700 transition-colors">{{ $member->title }}</p>
                                 <div class="flex space-x-2 mt-4">
                                     @if($member->social_email)
-                                    <span class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md">
-                                        <i data-feather="mail" class="size-3"></i>
+                                    <span class="size-6 inline-flex items-center justify-center bg-emerald-50 text-emerald-600 rounded-sm">
+                                        <i class="uil uil-envelope text-sm"></i>
                                     </span>
                                     @endif
                                     @if($member->social_linkedin)
-                                    <span class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md">
-                                        <i data-feather="linkedin" class="size-3"></i>
+                                    <span class="size-6 inline-flex items-center justify-center bg-emerald-50 text-emerald-600 rounded-sm">
+                                        <i class="uil uil-linkedin text-sm"></i>
                                     </span>
                                     @endif
                                     @if($member->social_google_scholar)
-                                    <span class="size-7 inline-flex items-center justify-center bg-emerald-100 text-emerald-600 rounded-md">
-                                        <i data-feather="book-open" class="size-3"></i>
+                                    <span class="size-6 inline-flex items-center justify-center bg-emerald-50 text-emerald-600 rounded-sm">
+                                        <i class="uil uil-graduation-cap text-sm"></i>
                                     </span>
                                     @endif
                                 </div>

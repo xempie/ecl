@@ -8,6 +8,8 @@ use App\Models\Member;
 use App\Models\Publication;
 use App\Models\Project;
 use App\Models\Category;
+use App\Models\Contact;
+use App\Models\News;
 
 class HomeController extends Controller
 {
@@ -24,13 +26,17 @@ class HomeController extends Controller
             ->get();
 
         $recentProjects = Project::with(['categories', 'members'])
-            ->active()
             ->featured()
             ->ordered()
             ->limit(6)
             ->get();
 
-        return view('index', compact('featuredPublications', 'recentProjects'));
+        $latestNews = News::published()
+            ->ordered()
+            ->limit(6)
+            ->get();
+
+        return view('index', compact('featuredPublications', 'recentProjects', 'latestNews'));
     }
 
     /**
@@ -66,7 +72,29 @@ class HomeController extends Controller
      */
     public function news()
     {
-        return view('news.index');
+        $news = News::published()->ordered()->paginate(12);
+        return view('news.index', compact('news'));
+    }
+
+    /**
+     * Display individual news article detail page
+     */
+    public function newsDetail($slug)
+    {
+        $news = News::where('slug', $slug)->published()->with('categories')->first();
+
+        if (!$news) {
+            abort(404);
+        }
+
+        // Get related news articles
+        $relatedNews = News::where('id', '!=', $news->id)
+            ->published()
+            ->ordered()
+            ->limit(3)
+            ->get();
+
+        return view('news.detail', compact('news', 'relatedNews'));
     }
 
     /**
@@ -78,10 +106,42 @@ class HomeController extends Controller
     }
 
     /**
-     * Display the contact page
+     * Display the contact page and handle form submission
      */
-    public function contact()
+    public function contact(Request $request)
     {
+        if ($request->isMethod('post')) {
+            // Validate the form data
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'subject' => 'required|string|max:255',
+                'message' => 'required|string',
+                'resume' => 'nullable|file|mimes:pdf,doc,docx|max:5120', // 5MB max
+            ]);
+
+            // Handle file upload if present
+            $resumePath = null;
+            if ($request->hasFile('resume')) {
+                $resumePath = $request->file('resume')->store('resumes', 'public');
+            }
+
+            // Create the contact record
+            Contact::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'subject' => $validated['subject'],
+                'message' => $validated['message'],
+                'resume_path' => $resumePath,
+                'status' => 'new',
+                'ip_address' => $request->ip(),
+                'user_agent' => $request->userAgent(),
+            ]);
+
+            // Redirect back with success message
+            return redirect()->back()->with('success', 'Thank you for your message! We will get back to you soon.');
+        }
+
         return view('contact');
     }
 

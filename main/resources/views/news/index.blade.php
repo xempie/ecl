@@ -1,29 +1,46 @@
-<!-- Latest News & Insights Section -->
+@extends('layouts.main')
+
+@section('title', 'News & Insights - Empathic Computing Research Lab')
+
+@section('content')
+
+<!-- Start Hero -->
+<section class="relative table w-full py-32 lg:py-40 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('assets/images/research/research.jpg') }}');">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="container relative">
+        <div class="grid grid-cols-1 text-center mt-10">
+            <h3 class="text-4xl lg:text-5xl text-white font-bold">News & Insights</h3>
+            <p class="text-slate-300 text-lg max-w-xl mx-auto mt-3">Stay updated with the latest developments in empathic computing research and lab announcements.</p>
+        </div><!--end grid-->
+    </div><!--end container-->
+
+    <div class="absolute text-center z-10 bottom-16 start-0 end-0 mx-3">
+        <ul class="tracking-[0.5px] mb-0 inline-block">
+            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">
+                <a href="{{ route('home') }}">Empathic Computing Lab</a>
+            </li>
+            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180">
+                <i class="uil uil-angle-right"></i>
+            </li>
+            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">News</li>
+        </ul>
+    </div>
+
+    <!-- Curved Bottom Design -->
+    <div class="absolute bottom-0 start-0 end-0">
+        <svg class="w-full h-auto" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 52 720 52C720 52 405 52 0 48Z" fill="currentColor" class="text-white"></path>
+        </svg>
+    </div>
+</section><!--end section-->
+<!-- End Hero -->
+
+<!-- News Section -->
 <section class="relative md:py-24 py-16 bg-white">
     <div class="container relative">
-        <!-- Section Header -->
-        <div class="grid md:grid-cols-12 grid-cols-1 pb-8 items-end">
-            <div class="lg:col-span-8 md:col-span-6 md:text-start text-center">
-                <h6 class="text-blue-600 text-sm font-bold uppercase mb-2">Stay Updated</h6>
-                <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold text-slate-900">
-                    Latest News & Insights
-                </h3>
-                <p class="text-slate-400 max-w-xl">
-                    Discover the latest developments in empathic computing research, breakthroughs, and lab announcements.
-                </p>
-            </div>
-
-            <div class="lg:col-span-4 md:col-span-6 md:text-end hidden md:block">
-                <a href="{{ url('/news') }}" class="relative inline-flex items-center font-semibold tracking-wide align-middle text-base text-center border-none after:content-[''] after:absolute after:h-px after:w-0 hover:after:w-full after:end-0 hover:after:end-auto after:bottom-0 after:start-0 after:duration-500 text-blue-600 hover:text-blue-600 after:bg-blue-600 duration-500 ease-in-out">
-                    View All News <i class="uil uil-arrow-right"></i>
-                </a>
-            </div>
-        </div><!--end grid-->
-
         <!-- News Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 mt-8 gap-[30px]">
-
-            @forelse($latestNews as $newsItem)
+        <div class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-[30px]">
+            @forelse($news as $newsItem)
             <!-- News Article {{ $loop->iteration }} -->
             <div class="group relative rounded-xl overflow-hidden shadow-md dark:shadow-gray-800 bg-white dark:bg-slate-900 hover:shadow-xl transition-all duration-500 h-full min-h-[600px] flex flex-col">
                 <div class="relative overflow-hidden h-[250px]">
@@ -34,7 +51,6 @@
                             <i class="uil uil-newspaper text-6xl text-white/50"></i>
                         </div>
                     @endif
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
                     <!-- Status Badge -->
                     <div class="absolute top-4 left-4">
@@ -93,17 +109,17 @@
                 <p class="text-slate-400">Check back soon for the latest updates and insights from our research lab.</p>
             </div>
             @endforelse
-
         </div><!--end grid-->
 
-        <!-- Mobile View All Button -->
-        <div class="grid grid-cols-1 mt-8 md:hidden">
-            <div class="text-center">
-                <a href="{{ url('/news') }}" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md">
-                    View All News <i class="uil uil-arrow-right"></i>
-                </a>
-            </div>
-        </div>
+        <!-- Pagination -->
+        @if($news->hasPages())
+        <div class="grid md:grid-cols-12 grid-cols-1 mt-8">
+            <div class="md:col-span-12 text-center">
+                {{ $news->links() }}
+            </div><!--end col-->
+        </div><!--end grid-->
+        @endif
     </div><!--end container-->
 </section><!--end section-->
-<!-- End Blog Posts Section -->
+
+@endsection

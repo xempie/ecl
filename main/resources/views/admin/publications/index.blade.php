@@ -87,20 +87,19 @@
                                     <span class="text-gray-400">-</span>
                                     @endif
                                 </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex space-x-2">
-                                        <a href="{{ route('admin.publications.show', $publication) }}" class="text-blue-600 hover:text-blue-800 text-xl" title="View">
-                                            <i class="uil uil-eye"></i>
+                                <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <a href="{{ route('admin.publications.show', $publication) }}" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-blue-600/5 hover:bg-blue-600 border border-blue-600/10 hover:border-blue-600 text-blue-600 hover:text-white rounded-md">
+                                            <i class="uil uil-eye text-[16px]"></i>
                                         </a>
-                                        <a href="{{ route('admin.publications.edit', $publication) }}" class="text-indigo-600 hover:text-indigo-800 text-xl" title="Edit">
-                                            <i class="uil uil-edit"></i>
+                                        <a href="{{ route('admin.publications.edit', $publication) }}" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-amber-600/5 hover:bg-amber-600 border border-amber-600/10 hover:border-amber-600 text-amber-600 hover:text-white rounded-md">
+                                            <i class="uil uil-edit text-[16px]"></i>
                                         </a>
-                                        <form method="POST" action="{{ route('admin.publications.destroy', $publication) }}" class="inline"
-                                              onsubmit="return confirm('Are you sure you want to delete this publication?')">
+                                        <form method="POST" action="{{ route('admin.publications.destroy', $publication) }}" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this publication?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-800 text-xl" title="Delete">
-                                                <i class="uil uil-trash"></i>
+                                            <button type="submit" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-red-600/5 hover:bg-red-600 border border-red-600/10 hover:border-red-600 text-red-600 hover:text-white rounded-md">
+                                                <i class="uil uil-trash text-[16px]"></i>
                                             </button>
                                         </form>
                                     </div>

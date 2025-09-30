@@ -179,7 +179,7 @@ if (swiperContainer) {
             grabCursor: true,
             effect: "creative",
             autoplay: {
-                delay: 6500,
+                delay: 600000,
                 disableOnInteraction: false,
             },
             watchSlidesProgress: true,

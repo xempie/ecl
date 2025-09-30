@@ -41,19 +41,19 @@
                         </thead>
                         <tbody>
                             @forelse($news as $item)
-                            <tr class="border-b border-gray-100 dark:border-gray-800">
+                            <tr class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onclick="window.location='{{ route('admin.news.edit', $item) }}'">
                                 <td class="py-3 px-4">
-                                    <div class="flex items-center">
-                                        @if($item->featured_image)
-                                            <img src="{{ asset($item->featured_image) }}" class="size-10 rounded-md mr-3" alt="">
+                                    <div class="flex items-center gap-4">
+                                        @if($item->image)
+                                            <img src="{{ asset('storage/' . $item->image) }}" class="size-10 rounded-md" alt="">
                                         @else
-                                            <div class="size-10 bg-blue-100 rounded-md flex items-center justify-center mr-3">
+                                            <div class="size-10 bg-blue-100 rounded-md flex items-center justify-center">
                                                 <i class="uil uil-newspaper text-blue-600"></i>
                                             </div>
                                         @endif
-                                        <div>
-                                            <h6 class="font-semibold">{{ $item->title }}</h6>
-                                            <p class="text-slate-400 text-sm">{{ Str::limit($item->excerpt, 50) }}</p>
+                                        <div class="flex-grow min-w-0">
+                                            <div class="font-medium text-gray-900 dark:text-white text-sm line-clamp-2">{{ $item->title }}</div>
+                                            <div class="text-xs text-gray-500 mt-1">{{ Str::limit($item->excerpt_display, 50) }}</div>
                                         </div>
                                     </div>
                                 </td>
@@ -70,9 +70,9 @@
                                         {{ ucfirst($item->status) }}
                                     </span>
                                 </td>
-                                <td class="py-3 px-4">{{ $item->author->name ?? 'Unknown' }}</td>
-                                <td class="py-3 px-4">{{ $item->published_at ? $item->published_at->format('M d, Y') : 'Not published' }}</td>
-                                <td class="py-3 px-4 text-center">
+                                <td class="py-3 px-4">{{ $item->author ?? 'Unknown' }}</td>
+                                <td class="py-3 px-4">{{ $item->published_date_formatted ?? 'Not published' }}</td>
+                                <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
                                     <div class="flex items-center justify-center space-x-2">
                                         <a href="{{ route('admin.news.show', $item) }}" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-blue-600/5 hover:bg-blue-600 border border-blue-600/10 hover:border-blue-600 text-blue-600 hover:text-white rounded-md">
                                             <i class="uil uil-eye text-[16px]"></i>

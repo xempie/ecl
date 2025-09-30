@@ -15,6 +15,7 @@ class Contact extends Model
         'phone',
         'subject',
         'message',
+        'resume_path',
         'status',
         'ip_address',
         'user_agent',

@@ -54,7 +54,7 @@
                         </thead>
                         <tbody>
                             @forelse($categories as $category)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onclick="window.location='{{ route('admin.categories.edit', $category) }}'">
+                            <tr class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onclick="window.location='{{ route('admin.categories.edit', $category) }}'">
                                 <td class="px-6 py-4">
                                     <div class="flex items-center">
                                         <div class="w-4 h-4 rounded-full mr-3 flex-shrink-0" style="background-color: {{ $category->color }}"></div>
@@ -103,26 +103,25 @@
                                 <td class="px-6 py-4">
                                     <span class="text-gray-900 dark:text-white font-medium">{{ $category->position_order }}</span>
                                 </td>
-                                <td class="px-6 py-4">
-                                    <div class="flex space-x-2">
-                                        <a href="{{ route('admin.categories.show', $category) }}" class="text-blue-600 hover:text-blue-800" title="View">
-                                            <i class="uil uil-eye"></i>
+                                <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
+                                    <div class="flex items-center justify-center space-x-2">
+                                        <a href="{{ route('admin.categories.show', $category) }}" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-blue-600/5 hover:bg-blue-600 border border-blue-600/10 hover:border-blue-600 text-blue-600 hover:text-white rounded-md">
+                                            <i class="uil uil-eye text-[16px]"></i>
                                         </a>
-                                        <a href="{{ route('admin.categories.edit', $category) }}" class="text-indigo-600 hover:text-indigo-800" title="Edit">
-                                            <i class="uil uil-edit"></i>
+                                        <a href="{{ route('admin.categories.edit', $category) }}" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-amber-600/5 hover:bg-amber-600 border border-amber-600/10 hover:border-amber-600 text-amber-600 hover:text-white rounded-md">
+                                            <i class="uil uil-edit text-[16px]"></i>
                                         </a>
                                         @if($category->publications_count == 0 && $category->projects_count == 0)
-                                        <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" class="inline" 
-                                              onsubmit="return confirm('Are you sure you want to delete this category?')">
+                                        <form method="POST" action="{{ route('admin.categories.destroy', $category) }}" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this category?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="text-red-600 hover:text-red-800" title="Delete">
-                                                <i class="uil uil-trash"></i>
+                                            <button type="submit" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-red-600/5 hover:bg-red-600 border border-red-600/10 hover:border-red-600 text-red-600 hover:text-white rounded-md">
+                                                <i class="uil uil-trash text-[16px]"></i>
                                             </button>
                                         </form>
                                         @else
-                                        <span class="text-gray-400" title="Cannot delete category in use">
-                                            <i class="uil uil-trash"></i>
+                                        <span class="size-8 inline-flex items-center justify-center bg-gray-100 border border-gray-200 text-gray-400 rounded-md" title="Cannot delete category in use">
+                                            <i class="uil uil-trash text-[16px]"></i>
                                         </span>
                                         @endif
                                     </div>

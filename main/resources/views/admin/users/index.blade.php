@@ -55,7 +55,7 @@
                         </thead>
                         <tbody>
                             @foreach($users as $user)
-                            <tr class="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+                            <tr class="bg-white border-b border-gray-100 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer" onclick="window.location='{{ route('admin.users.edit', $user) }}'">
                                 <td class="p-4">
                                     <div class="flex items-center">
                                         <div class="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3">
@@ -94,23 +94,20 @@
                                         {{ $user->updated_at->diffForHumans() }}
                                     </div>
                                 </td>
-                                <td class="p-4 text-center">
+                                <td class="py-3 px-4 text-center" onclick="event.stopPropagation()">
                                     <div class="flex items-center justify-center space-x-2">
-                                        <a href="{{ route('admin.users.show', $user) }}" 
-                                           class="inline-flex items-center px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded-md transition-colors">
-                                            <i class="uil uil-eye mr-1"></i> View
+                                        <a href="{{ route('admin.users.show', $user) }}" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-blue-600/5 hover:bg-blue-600 border border-blue-600/10 hover:border-blue-600 text-blue-600 hover:text-white rounded-md">
+                                            <i class="uil uil-eye text-[16px]"></i>
                                         </a>
-                                        <a href="{{ route('admin.users.edit', $user) }}" 
-                                           class="inline-flex items-center px-2 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 text-xs rounded-md transition-colors">
-                                            <i class="uil uil-edit mr-1"></i> Edit
+                                        <a href="{{ route('admin.users.edit', $user) }}" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-amber-600/5 hover:bg-amber-600 border border-amber-600/10 hover:border-amber-600 text-amber-600 hover:text-white rounded-md">
+                                            <i class="uil uil-edit text-[16px]"></i>
                                         </a>
                                         @if($user->id !== auth()->id())
-                                        <form method="POST" action="{{ route('admin.users.destroy', $user) }}" class="inline-block" 
-                                              onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.')">
+                                        <form method="POST" action="{{ route('admin.users.destroy', $user) }}" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="inline-flex items-center px-2 py-1 bg-red-100 hover:bg-red-200 text-red-700 text-xs rounded-md transition-colors">
-                                                <i class="uil uil-trash-alt mr-1"></i> Delete
+                                            <button type="submit" class="size-8 inline-flex items-center justify-center tracking-wide align-middle duration-500 text-base text-center bg-red-600/5 hover:bg-red-600 border border-red-600/10 hover:border-red-600 text-red-600 hover:text-white rounded-md">
+                                                <i class="uil uil-trash text-[16px]"></i>
                                             </button>
                                         </form>
                                         @endif

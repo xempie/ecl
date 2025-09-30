@@ -170,11 +170,44 @@ This is **Empathic Computing Research Lab** - a Laravel 12 academic website for 
 - **SSH Access**: Passwordless deployment via `ssh_keys/deployment_key`
 - **Deployment Script**: `deploy-passwordless.sh` for automated deployment
 
+### **🌐 CRITICAL: Website Root Configuration**
+**NEVER use any subfolder for website root URLs. The website root is `/new/` NOT `/new/public/`**
+
+**Required Implementation:**
+- ✅ **Website Root**: https://empathiccomputing.com/new/ (correct)
+- ❌ **Wrong**: https://empathiccomputing.com/new/public/ (never use this)
+- ✅ **Admin Access**: https://empathiccomputing.com/new/login (correct)
+- ✅ **Laravel Routes**: All routes work through `/new/` root without public subfolder
+- ✅ **.htaccess Setup**: Internal rewrite to public folder but URLs stay clean at `/new/`
+
+**Technical Details:**
+- Laravel's public folder is handled internally by `.htaccess` rewrite rules
+- Users should never see or access `/public/` in URLs
+- All admin routes, login, and application routes work directly from `/new/` root
+
+### **🌐 Environment URLs**
+**CRITICAL: Use these exact URLs for each environment**
+
+**Local Development:**
+- ✅ **Local URL**: http://127.0.0.1:8000/ (Laravel serve command)
+- ✅ **Local Admin**: http://127.0.0.1:8000/labadmin
+- ✅ **Local Testing**: Always use `php artisan serve` for development
+
+**Live Production:**
+- ✅ **Live URL**: https://empathiccomputing.com/new/
+- ✅ **Live Admin**: https://empathiccomputing.com/new/labadmin
+- ✅ **Live Login**: https://empathiccomputing.com/new/login
+
+**NEVER use:**
+- ❌ http://localhost/newecl/main/public/ (wrong local path)
+- ❌ https://empathiccomputing.com/new/public/ (wrong live path)
+
 ### **🔄 Development Workflow**
-1. **Local Development**: Work on local MySQL database (ecldb)
-2. **Testing**: Use local XAMPP environment for development
-3. **Deployment**: Run deployment script when ready to deploy
-4. **Database Sync**: Local data migrated to live MySQL during deployment
+1. **Local Development**: Use `php artisan serve` at http://127.0.0.1:8000/
+2. **Local Database**: Work on local MySQL database (ecldb)
+3. **Testing**: Test changes locally before deployment
+4. **Deployment**: Run deployment script when ready to deploy
+5. **Database Sync**: Local data migrated to live MySQL during deployment
 
 ### **📋 Deployment Commands**
 ```bash

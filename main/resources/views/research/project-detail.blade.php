@@ -7,39 +7,27 @@
 @section('content')
 
 <!-- Start Hero -->
-<section class="relative table w-full py-32 lg:py-40 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ $project->image ? asset($project->image) : 'https://picsum.photos/1920/700?random=30' }}');">
-    <div class="absolute inset-0 bg-black/70"></div>
+<section class="relative table w-full py-36 lg:py-44 bg-no-repeat bg-center bg-cover" style="background-image: url('{{ $project->image ? asset($project->image) : 'https://picsum.photos/1920/700?random=30' }}');">
+    <div class="absolute inset-0 bg-slate-900 opacity-75"></div>
     <div class="container relative">
-        <div class="grid grid-cols-1 text-center mt-10">
-            <h3 class="text-4xl lg:text-5xl text-white font-bold">{{ $project->title }}</h3>
+        <div class="grid grid-cols-1 pb-8 text-center mt-10">
+            <h3 class="mb-6 md:text-4xl text-3xl md:leading-normal leading-normal font-medium text-white">{{ $project->title }}</h3>
+
+            @if($project->description)
+            <p class="text-slate-300 text-lg max-w-xl mx-auto">{{ Str::limit($project->description, 150) }}</p>
+            @endif
         </div><!--end grid-->
     </div><!--end container-->
 
-    <div class="absolute text-center z-10 bottom-16 start-0 end-0 mx-3">
-        <ul class="tracking-[0.5px] mb-0 inline-block">
-            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">
-                <a href="{{ route('home') }}">Empathic Computing Lab</a>
-            </li>
-            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180">
-                <i class="uil uil-angle-right"></i>
-            </li>
-            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white/50 hover:text-white">
-                <a href="{{ route('research.projects') }}">Projects</a>
-            </li>
-            <li class="inline-block text-base text-white/50 mx-0.5 ltr:rotate-0 rtl:rotate-180">
-                <i class="uil uil-angle-right"></i>
-            </li>
-            <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">{{ $project->title }}</li>
-        </ul>
-    </div>
-
-    <!-- Curved Bottom Design -->
-    <div class="absolute bottom-0 start-0 end-0">
-        <svg class="w-full h-auto" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 52 720 52C720 52 405 52 0 48Z" fill="currentColor" class="text-white"></path>
+</section><!--end section-->
+<div class="relative">
+    <div class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white dark:text-slate-900">
+        <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
         </svg>
     </div>
-</section><!--end section-->
+</div>
+<!-- End Hero -->
 
 <!-- Project Details Section -->
 <section class="relative md:py-24 py-16">

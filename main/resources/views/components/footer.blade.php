@@ -29,7 +29,7 @@
                             </ul>
                         </div><!--end col-->
                         
-                        <div class="lg:col-span-2 md:col-span-4">
+                        <div class="lg:col-span-3 md:col-span-4">
                             <h5 class="tracking-[1px] text-gray-100 font-semibold">Team</h5>
                             <ul class="list-none footer-list mt-6">
                                 <li><a href="{{ url('/team/faculty') }}" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Faculty</a></li>
@@ -38,7 +38,7 @@
                             </ul>
                         </div><!--end col-->
 
-                        <div class="lg:col-span-2 md:col-span-4">
+                        <div class="lg:col-span-3 md:col-span-4">
                             <h5 class="tracking-[1px] text-gray-100 font-semibold">Quick Links</h5>
                             <ul class="list-none footer-list mt-6">
                                 <li><a href="{{ url('/about') }}" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> About</a></li>
@@ -48,23 +48,6 @@
                             </ul>
                         </div><!--end col-->
 
-                        <div class="lg:col-span-2 md:col-span-4">
-                            <h5 class="tracking-[1px] text-gray-100 font-semibold">Newsletter</h5>
-                            <p class="mt-6 text-gray-300">Subscribe to get our latest research updates.</p>
-                            <form>
-                                <div class="grid grid-cols-1">
-                                    <div class="foot-subscribe my-3">
-                                        <label class="form-label">Write your email <span class="text-red-600">*</span></label>
-                                        <div class="form-icon relative mt-2">
-                                            <i data-feather="mail" class="size-4 absolute top-3 start-4"></i>
-                                            <input type="email" class="form-input ps-12 rounded" placeholder="Email" name="email" required="">
-                                        </div>
-                                    </div>
-                                    
-                                    <button type="submit" id="submitsubscribe" name="send" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-blue-600 hover:bg-blue-700 border-blue-600 hover:border-blue-700 text-white rounded-md">Subscribe</button>
-                                </div>
-                            </form>
-                        </div><!--end col-->
                     </div><!--end grid-->
                 </div><!--end -->
             </div><!--end col-->

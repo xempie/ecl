@@ -16,7 +16,7 @@
                 <a href="{{ route('admin.news.edit', $news) }}" class="py-[7px] px-6 font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-amber-600/5 hover:bg-amber-600 border-amber-600/10 hover:border-amber-600 text-amber-600 hover:text-white rounded-md">
                     <i class="uil uil-edit"></i> Edit
                 </a>
-                <a href="{{ route('admin.news') }}" class="py-[7px] px-6 font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-gray-600/5 hover:bg-gray-600 border-gray-600/10 hover:border-gray-600 text-gray-600 hover:text-white rounded-md">
+                <a href="{{ route('admin.news.index') }}" class="py-[7px] px-6 font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-gray-600/5 hover:bg-gray-600 border-gray-600/10 hover:border-gray-600 text-gray-600 hover:text-white rounded-md">
                     <i class="uil uil-arrow-left"></i> Back to News
                 </a>
             </div>
@@ -28,9 +28,9 @@
                 <!-- Main Content -->
                 <div class="lg:col-span-2">
                     <div class="relative overflow-hidden rounded-md shadow-sm dark:shadow-gray-700 bg-white dark:bg-slate-900">
-                        @if($news->featured_image)
+                        @if($news->image)
                         <div class="aspect-video overflow-hidden">
-                            <img src="{{ asset($news->featured_image) }}" class="w-full h-full object-cover" alt="{{ $news->title }}">
+                            <img src="{{ asset('storage/' . $news->image) }}" class="w-full h-full object-cover" alt="{{ $news->title }}">
                         </div>
                         @endif
                         
@@ -48,7 +48,7 @@
                                     {{ ucfirst($news->status) }}
                                 </span>
                                 <span class="text-sm text-slate-400">
-                                    {{ $news->published_at ? $news->published_at->format('F j, Y g:i A') : 'Not published' }}
+                                    {{ $news->published_date ? $news->published_date->format('F j, Y g:i A') : 'Not published' }}
                                 </span>
                             </div>
 
@@ -88,7 +88,7 @@
                             <div class="space-y-4">
                                 <div>
                                     <label class="text-sm font-semibold text-slate-600 dark:text-slate-300">Author:</label>
-                                    <p class="text-slate-900 dark:text-white">{{ $news->author->name ?? 'Unknown' }}</p>
+                                    <p class="text-slate-900 dark:text-white">{{ $news->author ?? 'Unknown' }}</p>
                                 </div>
 
                                 <div>
